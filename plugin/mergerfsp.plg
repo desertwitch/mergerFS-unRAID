@@ -9,8 +9,8 @@
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
-<!ENTITY plgNAME   "mergerfsp-2023.09.02-x86_64-1">
-<!ENTITY plgMD5    "eebe39234936c932b3391f7c9f26f612">
+<!ENTITY plgNAME   "mergerfsp-2023.09.11-x86_64-1">
+<!ENTITY plgMD5    "90bc7cd688780e860bd3cb6e15822c4f">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 

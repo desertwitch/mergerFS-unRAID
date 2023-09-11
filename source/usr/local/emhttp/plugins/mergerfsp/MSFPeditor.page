@@ -60,8 +60,6 @@ $(function(){
         hintOptions: {}
     });
 
-    editor.setSize(null, 600);
-
     $('#tab2').click(function () {
         editor.refresh();
     });

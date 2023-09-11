@@ -60,6 +60,7 @@ definition for uninstallation of the plugin
 -->
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
+killall mergerfs
 removepkg &plgPATH;/*.txz
 
 rm -rf &plgPATH;

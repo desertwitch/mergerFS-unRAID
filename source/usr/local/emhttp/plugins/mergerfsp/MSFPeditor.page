@@ -14,7 +14,7 @@ Markdown="false"
 </style>
 <link type="text/css" rel="stylesheet" href="<?=autov('/webGui/styles/jquery.filetree.css');?>">
 <span style="float:right;margin-right:10px"><a href="https://github.com/trapexit/mergerfs#readme" target="_blank" title="mergerFS Documentation"><i class="fa fa-file-text-o"></i> <u>mergerFS Documentation</u></a></span>
-<p>If you want to hook into other events than the ones available below, check out the "User Scripts" addon too.</p>
+<p>If you want to hook into other events than the ones available below, check out the "User Scripts" addon for more.</p>
 <form id="editform" method="POST">
 <img id="editfolder" style="cursor:pointer;margin-left: 10px;" src="/webGui/images/explore.png" >
 

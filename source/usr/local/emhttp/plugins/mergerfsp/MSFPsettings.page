@@ -21,7 +21,7 @@ $(function() {
 
 <span style="float:right;margin-right:10px"><a href="https://forums.unraid.net/topic/144497-plugin-netatalk-afp-for-unraid-support-topic/" target="_blank" title="AFP Configuration Manual"><i class="fa fa-medkit"></i> <u>Support Thread</u></a></span>
 <div style="color:red;"><strong><u>WARNING:</u></strong></div>
-<div style="color:red;"><strong>mergerFS is a non-supported filesystem for advanced users and can - depending on how YOU set it up - wreak havoc on your system.</strong></div>
+<div><strong>mergerFS is a non-supported filesystem for advanced users and can - depending on how YOU set it up - wreak havoc on your system.</strong></div>
 <div><strong>Please make yourself familiar with the documentation before trying any unfamiliar mergerFS commands - you are warned only once here.</strong></div>
 <div>By default this addon only installs the mergerFS binaries, the rest is up to you to set up via shell scripting (see below for a script editor).</div>
 

@@ -49,7 +49,7 @@ find &plgPATH;/ -type f -iname "&name;*.txz" ! -iname "*&plgNAME;*" -delete
 
 echo ""
 echo "-------------------------------------------------------------"
-echo " &name; &version; has been installed."
+echo " mergerFS for UNRAID (&version;) has been installed."
 echo " Copyright 2023 - &author;"
 echo "-------------------------------------------------------------"
 </INLINE>
@@ -67,7 +67,7 @@ rm -rf &emhttp;
 
 echo ""
 echo "-----------------------------------------------------------"
-echo " &name; &version; has been removed."
+echo " mergerFS for UNRAID (&version;) has been removed."
 echo " Copyright 2023 - &author;"
 echo "-----------------------------------------------------------"
 echo ""

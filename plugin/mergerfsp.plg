@@ -1,0 +1,77 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "mergerfsp">
+<!ENTITY author    "desertwitch">
+<!ENTITY version   "2023.09.11">
+<!ENTITY launch    "Settings/MSFPsettings">
+<!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
+<!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
+<!ENTITY pkgURL    "&gitURL;/packages">
+<!ENTITY plgPATH   "/boot/config/plugins/&name;">
+<!ENTITY plgNAME   "mergerfsp-2023.09.02-x86_64-1">
+<!ENTITY plgMD5    "eebe39234936c932b3391f7c9f26f612">
+<!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" support="" min="6.10.0">
+
+<CHANGES>
+## mergerFS for UNRAID
+###2023.09.11
+- release note: welcome to the first version of the mergerFS package.
+- release note: please report any problems in the support topic.
+</CHANGES>
+
+<!--
+install or upgrade dependency files
+-->
+<FILE Name="&plgPATH;/mergerfs-2.37.1-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
+<URL>&pkgURL;/mergerfs-2.37.1-x86_64-1.txz</URL>
+<MD5>d8a3c1c2912a4950990e86162d768e4b</MD5>
+</FILE>
+
+<!--
+install or upgrade the plugin itself
+-->
+<FILE Name="&plgPATH;/&plgNAME;.txz" Min="6.10" Run="upgradepkg --install-new">
+<URL>&gitURL;/archive/&plgNAME;.txz</URL>
+<MD5>&plgMD5;</MD5>
+</FILE>
+
+<!--
+run the post-installation scripts
+-->
+<FILE Run="/bin/bash">
+<INLINE> 
+# Cleaning old plugin source files
+find &plgPATH;/ -type f -iname "&name;*.txz" ! -iname "*&plgNAME;*" -delete
+
+echo ""
+echo "-------------------------------------------------------------"
+echo " &name; &version; has been installed."
+echo " Copyright 2023 - &author;"
+echo "-------------------------------------------------------------"
+</INLINE>
+</FILE>
+
+<!--
+definition for uninstallation of the plugin
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+removepkg &plgPATH;/*.txz
+
+rm -rf &plgPATH;
+rm -rf &emhttp;
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; &version; has been removed."
+echo " Copyright 2023 - &author;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+</PLUGIN>

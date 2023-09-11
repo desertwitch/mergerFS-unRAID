@@ -1,0 +1,19 @@
+Menu="OtherSettings"
+Type="xmenu"
+Title="mergerFS"
+Icon="archive"
+Tag="archive"
+Markdown="false"
+---
+<script>
+$(function() {
+    
+    // dynamix plugin update api
+    <?if (function_exists('plugin_update_available') && $version = plugin_update_available('mergerfsp')):?>
+        showNotice('mergerFS <?=htmlspecialchars($version);?> available. <a>Update</a>','mergerfsp');
+        $('#user-notice a').on('click', function () {
+        $('#user-notice').empty();
+    });
+    <?endif;?>
+});
+</script>

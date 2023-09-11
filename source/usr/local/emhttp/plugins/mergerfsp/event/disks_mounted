@@ -1,0 +1,21 @@
+#!/bin/sh
+PROG="mergerfsp"
+PLGPATH="/boot/config/plugins/$PROG"
+
+trap "exit 0" SIGTERM
+
+if [ -x $PLGPATH/scripts/array_start.sh ]; then
+    echo "Executing mergerFS startup script (disks_mounted)..." | logger
+    TIMER=0
+    while [ ! -d /mnt/user ]
+    do
+        sleep 1
+        TIMER=$((TIMER+1))
+        if [ $TIMER -ge 20 ]; then
+            echo "MERGERFS ERROR: /mnt/user never became available." | logger
+            echo "MERGERFS ERROR: The mergerFS startup script has not been executed." | logger
+            break
+        fi
+    done
+    $PLGPATH/scripts/array_start.sh 2>&1 | logger
+fi

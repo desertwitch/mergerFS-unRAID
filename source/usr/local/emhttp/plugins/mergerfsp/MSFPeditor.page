@@ -30,10 +30,6 @@ Markdown="false"
 </form>
 </dl>
 
-<blockquote class="inline_help">
-    <p>The <strong>Save</strong> button saves any script changes made.</p>
-</blockquote>
-
 <script src="<?=autov('/plugins/mergerfsp/js/codemirror/codemirror.min.js');?>"></script>
 
 <script src="<?=autov('/plugins/mergerfsp/js/codemirror/autorefresh.min.js');?>"></script>

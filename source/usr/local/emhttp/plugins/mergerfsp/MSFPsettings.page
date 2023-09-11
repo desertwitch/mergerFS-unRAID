@@ -8,7 +8,6 @@ Markdown="false"
 <? $mergerfs_backend = trim(shell_exec("find /var/log/packages/ -type f -iname 'mergerfs-*' -printf '%f\n' 2> /dev/null")); ?>
 <script>
 $(function() {
-    
     // dynamix plugin update api
     <?if (function_exists('plugin_update_available') && $version = plugin_update_available('mergerfsp')):?>
         showNotice('mergerFS <?=htmlspecialchars($version);?> available. <a>Update</a>','mergerfsp');
@@ -19,7 +18,7 @@ $(function() {
 });
 </script>
 
-<span style="float:right;margin-right:10px"><a href="https://forums.unraid.net/topic/144497-plugin-netatalk-afp-for-unraid-support-topic/" target="_blank" title="AFP Configuration Manual"><i class="fa fa-medkit"></i> <u>Support Thread</u></a></span>
+<span style="float:right;margin-right:10px"><a href="https://forums.unraid.net/topic/144999-plugin-mergerfs-for-unraid-support-topic/" target="_blank" title="mergerFS Support Thread"><i class="fa fa-medkit"></i> <u>Support Thread</u></a></span>
 <div style="color:red;"><strong>WARNING:</strong></div>
 <div><strong>mergerFS is a non-supported filesystem for advanced users and can - depending on how YOU set it up - wreak havoc on your system.</strong></div>
 <div><strong>Please make yourself familiar with the documentation before trying any unfamiliar mergerFS commands - you are warned only once here.</strong></div>

@@ -14,7 +14,7 @@
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 
-<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" support="" min="6.10.0">
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" support="https://forums.unraid.net/topic/144999-plugin-mergerfs-for-unraid-support-topic/" min="6.10.0">
 
 <CHANGES>
 ## mergerFS for UNRAID

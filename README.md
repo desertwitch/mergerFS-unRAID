@@ -4,7 +4,7 @@ A plugin that installs mergerFS, a featureful union filesystem, onto UNRAID syst
 
 Feel free to fork and contribute via pull requests, also find here the support thread:
 
-https://forums.unraid.net/topic/144497-plugin-netatalk-afp-for-unraid-support-topic/
+https://forums.unraid.net/topic/144999-plugin-mergerfs-for-unraid-support-topic/
 
 This plugin is based on and inspired by the NUT plugin, please also check it out:
 

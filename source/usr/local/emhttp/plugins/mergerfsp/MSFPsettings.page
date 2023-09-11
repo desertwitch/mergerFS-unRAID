@@ -1,8 +1,8 @@
 Menu="OtherSettings"
 Type="xmenu"
 Title="mergerFS"
-Icon="archive"
-Tag="archive"
+Icon="hdd-o"
+Tag="hdd-o"
 Markdown="false"
 ---
 <script>

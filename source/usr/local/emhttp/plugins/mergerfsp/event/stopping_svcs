@@ -1,8 +1,6 @@
 #!/bin/sh
-PROG="mergerfsp"
-PLGPATH="/boot/config/plugins/$PROG"
 
-if [ -x $PLGPATH/scripts/array_stop.sh ]; then
+if [ -x /etc/mergerfsp/array_stop.sh ]; then
     echo "Executing mergerFS stop script (stopping_svcs)..." | logger
-    $PLGPATH/scripts/array_stop.sh 2>&1 | logger
+    /etc/mergerfsp/array_stop.sh 2>&1 | logger
 fi

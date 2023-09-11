@@ -11,7 +11,7 @@ if [ -x /etc/mergerfsp/array_start.sh ]; then
         TIMER=$((TIMER+1))
         if [ $TIMER -ge 20 ]; then
             echo "MERGERFSP ERROR: /mnt/user never became available." | logger
-            echo "MERGERFSP ERROR: The mergerFS startup script has not been executed." | logger
+            echo "MERGERFSP ERROR: The mergerFS startup script has therefore not been executed." | logger
             break
         fi
     done

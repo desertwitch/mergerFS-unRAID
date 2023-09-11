@@ -1,2 +1,2 @@
 #!/bin/sh
-# Put any mergerFS commands to run AT ARRAY START here
+# Put any mergerFS commands to run at ARRAY START (disks mounted) here!

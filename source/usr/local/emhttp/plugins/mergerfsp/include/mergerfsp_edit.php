@@ -1,5 +1,5 @@
 <?
-$base = '/boot/config/plugins/mergerfsp/scripts/';
+$base = '/etc/mergerfsp/';
 $file = realpath($_GET['editfile']);
 $editfile = 'Invalid File';
 

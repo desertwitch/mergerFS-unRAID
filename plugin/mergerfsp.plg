@@ -28,7 +28,7 @@ install or upgrade dependency files
 -->
 <FILE Name="&plgPATH;/mergerfs-2.37.1-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
 <URL>&pkgURL;/mergerfs-2.37.1-x86_64-1.txz</URL>
-<MD5>d8a3c1c2912a4950990e86162d768e4b</MD5>
+<MD5>a228d2b21133e008f978cec27b3ddcbe</MD5>
 </FILE>
 
 <!--

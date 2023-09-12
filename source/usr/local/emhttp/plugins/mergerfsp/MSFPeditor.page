@@ -14,7 +14,9 @@ Markdown="false"
 </style>
 <link type="text/css" rel="stylesheet" href="<?=autov('/webGui/styles/jquery.filetree.css');?>">
 <span style="float:right;margin-right:10px"><a href="https://github.com/trapexit/mergerfs#readme" target="_blank" title="mergerFS Documentation"><i class="fa fa-file-text-o"></i> <u>mergerFS Documentation</u></a></span>
-<p style="font-size:x-small;">If you want to hook into other events than the ones available below, check out the "User Scripts" addon for more scripting features.</p>
+<div>You can use the mergerFS binaries anywhere on your UNRAID system, this editor simply aims to provide a basic way for your scripts to persist any system reboots.</div>
+<div>For more granular scripting, such as using cronjobs or other event hooks than those available below, please also check out the "User Scripts" addon on Community Applications.</div>
+<br>
 <form id="editform" method="POST">
 <img id="editfolder" style="cursor:pointer;margin-left: 10px;" src="/webGui/images/explore.png" >
 

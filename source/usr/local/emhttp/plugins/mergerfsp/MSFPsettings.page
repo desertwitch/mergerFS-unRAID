@@ -22,12 +22,19 @@ $(function() {
 <div style="color:red;"><strong>WARNING:</strong></div>
 <div><strong>mergerFS is a non-supported filesystem for advanced users and can - depending on how YOU set it up - wreak havoc on your system.</strong></div>
 <div><strong>Please make yourself familiar with the documentation before trying any unfamiliar mergerFS commands - you are warned only once here.</strong></div>
-<div>By default this addon only installs the mergerFS binaries, the rest is up to you to set up via shell scripting (see below for a script editor).</div>
+<div>By default this addon only installs the mergerFS binaries, the rest is up to you to set up via shell scripting (see below for a basic script editor).</div>
 
 <br>
 <dl>
     <dt>mergerFS backend:</dt>
     <dd>
 	    <strong><?= isset($mergerfs_backend) && $mergerfs_backend ? $mergerfs_backend : "n/a" ?></strong>
+    </dd>
+</dl>
+
+<dl>
+    <dt>mergerFS available binaries:</dt>
+    <dd>
+    <strong>/usr/bin/mergerfs, /usr/bin/mergerfs-fusermount</strong>
     </dd>
 </dl>

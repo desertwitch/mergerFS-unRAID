@@ -3,22 +3,22 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "mergerfsp">
 <!ENTITY author    "desertwitch">
-<!ENTITY version   "2023.09.11">
+<!ENTITY version   "2023.09.12">
 <!ENTITY launch    "Settings/MSFPsettings">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
-<!ENTITY plgNAME   "mergerfsp-2023.09.02-x86_64-1">
-<!ENTITY plgMD5    "eebe39234936c932b3391f7c9f26f612">
+<!ENTITY plgNAME   "mergerfsp-2023.09.12-x86_64-1">
+<!ENTITY plgMD5    "d797ca939eebf8d3760e6f06e0f1378c">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 
-<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" support="" min="6.10.0">
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" support="https://forums.unraid.net/topic/144999-plugin-mergerfs-for-unraid-support-topic/" min="6.10.0">
 
 <CHANGES>
 ## mergerFS for UNRAID
-###2023.09.11
+###2023.09.12
 - release note: welcome to the first version of the mergerFS package.
 - release note: please report any problems in the support topic.
 </CHANGES>
@@ -60,6 +60,7 @@ definition for uninstallation of the plugin
 -->
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
+killall mergerfs
 removepkg &plgPATH;/*.txz
 
 rm -rf &plgPATH;

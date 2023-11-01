@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "mergerfsp">
 <!ENTITY author    "desertwitch">
-<!ENTITY version   "2023.09.12a">
+<!ENTITY version   "2023.11.01">
 <!ENTITY launch    "Settings/MSFPsettings">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
@@ -18,6 +18,8 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2023.11.01
+- new: mergerFS binaries updated to latest release version 2.38.0
 ###2023.09.12
 - release note: welcome to the first version of the mergerFS package.
 - release note: please report any problems in the support topic.
@@ -26,9 +28,9 @@
 <!--
 install or upgrade dependency files
 -->
-<FILE Name="&plgPATH;/mergerfs-2.37.1-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
-<URL>&pkgURL;/mergerfs-2.37.1-x86_64-1.txz</URL>
-<MD5>a228d2b21133e008f978cec27b3ddcbe</MD5>
+<FILE Name="&plgPATH;/mergerfs-2.38.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
+<URL>&pkgURL;/mergerfs-2.38.0-x86_64-1.txz</URL>
+<MD5>0d014b55855ea9b4ecdc369ed32d1b82</MD5>
 </FILE>
 
 <!--

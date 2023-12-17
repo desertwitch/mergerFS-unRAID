@@ -3,14 +3,14 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "mergerfsp">
 <!ENTITY author    "desertwitch">
-<!ENTITY version   "2023.11.01">
+<!ENTITY version   "2023.12.17">
 <!ENTITY launch    "Settings/MSFPsettings">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
-<!ENTITY plgNAME   "mergerfsp-2023.09.12a-x86_64-1">
-<!ENTITY plgMD5    "9c6a3e4811099c6d1e803ddcfdc92a94">
+<!ENTITY plgNAME   "mergerfsp-2023.12.17-x86_64-1">
+<!ENTITY plgMD5    "6f464660c2d67310e97f2b0e939f13aa">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 
@@ -18,6 +18,8 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2023.12.17
+- new: mergerFS-Tools are now also installed for advanced mergerFS administration.
 ###2023.11.01
 - new: mergerFS binaries updated to latest release version 2.38.0
 ###2023.09.12
@@ -31,6 +33,11 @@ install or upgrade dependency files
 <FILE Name="&plgPATH;/mergerfs-2.38.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
 <URL>&pkgURL;/mergerfs-2.38.0-x86_64-1.txz</URL>
 <MD5>0d014b55855ea9b4ecdc369ed32d1b82</MD5>
+</FILE>
+
+<FILE Name="&plgPATH;/mergerfstools-2.38.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
+<URL>&pkgURL;/mergerfstools-2.38.0-x86_64-1.txz</URL>
+<MD5>09870c08e1d3dda586703d124090ba47</MD5>
 </FILE>
 
 <!--

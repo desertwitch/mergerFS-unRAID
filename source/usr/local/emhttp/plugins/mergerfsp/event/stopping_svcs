@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -x /etc/mergerfsp/array_stop.sh ]; then
-    echo "Executing mergerFS stop script (stopping_svcs)..." | logger
+    echo "Executing mergerFS array stop script (stopping_svcs)..." | logger
     /etc/mergerfsp/array_stop.sh 2>&1 | logger
 fi

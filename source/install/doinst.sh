@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 BOOT="/boot/config/plugins/mergerfsp"
 DOCROOT="/usr/local/emhttp/plugins/mergerfsp"
 

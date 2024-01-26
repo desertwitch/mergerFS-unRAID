@@ -1,2 +1,2 @@
-#!/bin/sh
-# Put any commands to run at ARRAY STOP (before disks unmounted) here!
+#!/bin/bash
+# Put any commands to run at ARRAY STOP (right before disks unmounted) here!

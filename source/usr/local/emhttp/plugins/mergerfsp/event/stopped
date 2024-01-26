@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ -x /etc/mergerfsp/array_stop_complete.sh ]; then
+    echo "Executing mergerFS array stop complete script (stopped)..." | logger
+    /etc/mergerfsp/array_stop_complete.sh 2>&1 | logger
+fi

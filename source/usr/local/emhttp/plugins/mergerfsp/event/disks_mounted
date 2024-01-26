@@ -1,19 +1,25 @@
-#!/bin/sh
+#!/bin/bash
 
 trap "exit 0" SIGTERM
 
 if [ -x /etc/mergerfsp/array_start.sh ]; then
-    echo "Executing mergerFS startup script (disks_mounted)..." | logger
+
     TIMER=0
-    while [ ! -d /mnt/user ]
-    do
+
+    while [ ! -d /mnt/user ]; do
         sleep 1
         TIMER=$((TIMER+1))
         if [ $TIMER -ge 20 ]; then
-            echo "MERGERFSP ERROR: /mnt/user never became available." | logger
-            echo "MERGERFSP ERROR: The mergerFS startup script has therefore not been executed." | logger
             break
         fi
     done
-    /etc/mergerfsp/array_start.sh 2>&1 | logger
+
+    if [ -d /mnt/user ]; then
+        echo "Executing mergerFS array start script (disks_mounted)..." | logger
+        /etc/mergerfsp/array_start.sh 2>&1 | logger
+    else
+        echo "mergerFS warning: /mnt/user never became available (within a 20 seconds timeout)." | logger
+        echo "mergerFS warning: The mergerFS array start script has therefore not been executed." | logger
+    fi
+
 fi

@@ -3,14 +3,14 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "mergerfsp">
 <!ENTITY author    "desertwitch">
-<!ENTITY version   "2024.01.26">
+<!ENTITY version   "2024.02.23">
 <!ENTITY launch    "Settings/MSFPsettings">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
-<!ENTITY plgNAME   "mergerfsp-2024.01.26-x86_64-1">
-<!ENTITY plgMD5    "44deff496d7ab86d75ab3f23968a330f">
+<!ENTITY plgNAME   "mergerfsp-2024.02.23-x86_64-1">
+<!ENTITY plgMD5    "ac306af793619a8522f944ab057eb92b">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 
@@ -18,6 +18,8 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.02.23
+- new: mergerFS binaries updated to latest release version 2.40.0
 ###2024.01.26
 - new: added more event hooks for better scripting possibilities with mergerFS
 - fix: do not launch disks_mounted script if disk mounts never became available
@@ -33,9 +35,9 @@
 <!--
 install or upgrade dependency files
 -->
-<FILE Name="&plgPATH;/mergerfs-2.38.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
-<URL>&pkgURL;/mergerfs-2.38.0-x86_64-1.txz</URL>
-<MD5>0d014b55855ea9b4ecdc369ed32d1b82</MD5>
+<FILE Name="&plgPATH;/mergerfs-2.40.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
+<URL>&pkgURL;/mergerfs-2.40.0-x86_64-1.txz</URL>
+<MD5>cfd97a29a9584f0a0200b70d2add706d</MD5>
 </FILE>
 
 <FILE Name="&plgPATH;/mergerfstools-2.38.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">

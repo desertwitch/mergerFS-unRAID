@@ -58,14 +58,12 @@ run the post-installation scripts
 -->
 <FILE Run="/bin/bash">
 <INLINE> 
-# Cleaning old plugin source files
-find &plgPATH;/ -type f -iname "&name;*.txz" ! -iname "*&plgNAME;*" -delete
-
 echo ""
 echo "-------------------------------------------------------------"
 echo " mergerFS for UNRAID (&version;) has been installed."
 echo " Copyright 2023 - &author;"
 echo "-------------------------------------------------------------"
+echo ""
 </INLINE>
 </FILE>
 

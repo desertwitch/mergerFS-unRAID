@@ -21,19 +21,20 @@ Markdown="false"
 <br>
 
 <form id="editform" method="POST">
-<img id="editfolder" style="cursor:pointer;margin-left: 10px;" src="/webGui/images/explore.png" >
+    <img id="editfolder" style="cursor:pointer;margin-left: 10px;" src="/webGui/images/explore.png" >
 
-<input id="editfile" type="text" name="editfile" value="" readonly="" data-picktop="/etc/mergerfsp" data-pickcloseonfile="true" data-pickfilter="sh" data-pickroot="/etc/mergerfsp" data-pickfolders="false" required="required" >
+    <input id="editfile" type="text" name="editfile" value="" readonly="" data-picktop="/etc/mergerfsp" data-pickcloseonfile="true" data-pickfilter="sh" data-pickroot="/etc/mergerfsp" data-pickfolders="false" required="required" >
 
-<textarea id="editdata" name="editdata" placeholder="Select a script file to modify." autofocus></textarea>
-<input type="hidden" name="commit" value="1" />
-<dl>
-    <dt></dt>
-    <dd><input type="button" value="Save" id="btnSubmit" title="Save the script changes." />
-    <input type="button" value="Cancel" id="btnCancel" />
-    </dd>
+    <textarea id="editdata" name="editdata" placeholder="Select a script file to modify." autofocus></textarea>
+    <input type="hidden" name="commit" value="1" />
+    <dl>
+        <dt></dt>
+        <dd>
+            <input type="button" value="Save" id="btnSubmit" title="Save the script changes." />
+            <input type="button" value="Cancel" id="btnCancel" />
+        </dd>
+    </dl>
 </form>
-</dl>
 
 <script src="<?=autov('/webGui/javascript/jquery.filetree.js');?>"></script>
 <script src="<?=autov('/plugins/mergerfsp/js/codemirror.min.js');?>"></script>

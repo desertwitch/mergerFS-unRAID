@@ -1,6 +1,23 @@
 #!/bin/bash
 
+CONFIG="/boot/config/plugins/mergerfsp/mergerfsp.cfg"
+[ -e "$CONFIG" ] && source $CONFIG
+
+TIMERSTARTKILL=$((TIMERSTART+10))
+
 if [ -x /etc/mergerfsp/array_start_complete.sh ]; then
-    echo "Executing mergerFS array start complete script (started)..." | logger
-    /etc/mergerfsp/array_start_complete.sh 2>&1 | logger
+    echo "mergerFS: array_start_complete.sh is now executing (event: started)..." | logger -t "mergerfsp"
+
+    timeout --kill-after=$TIMERSTARTKILL /etc/mergerfsp/array_start_complete.sh 2>&1 | logger -t "mergerfsp"
+    CMDRET="${PIPESTATUS[0]}"
+
+    if [ "$CMDRET" -eq 124 ]; then
+        echo "mergerFS error: array_start_complete.sh has timed out and was stopped with SIGTERM." | logger -t "mergerfsp"
+    elif [ "$CMDRET" -eq 137 ]; then
+        echo "mergerFS error: array_start_complete.sh has timed out, was unresponsive to SIGTERM and killed with SIGKILL." | logger -t "mergerfsp"
+    elif [ ! "$CMDRET" -eq 0 ]; then
+        echo "mergerFS error: array_start_complete.sh has returned with a non-zero exit code ($CMDRET)." | logger -t "mergerfsp"
+    else
+        echo "mergerFS: array_start_complete.sh was executed with success." | logger -t "mergerfsp"
+    fi
 fi

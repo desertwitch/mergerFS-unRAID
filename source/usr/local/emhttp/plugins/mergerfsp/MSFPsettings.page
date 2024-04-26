@@ -57,7 +57,19 @@ Markdown="false"
     </dl>
 
     <dl>
-        <dt>mergerFS Scripting - Array Start Timeout:</dt>
+        <dt>mergerFS Scripting - Array Start Mounts Timeout:</dt>
+        <dd>
+            <input id="TIMERMOUNTS" type="text" class="narrow" name="TIMERMOUNTS" maxlength="30" value="<?=$mergerfsp_timer_mounts?>">seconds
+        </dd>
+    </dl>
+
+    <blockquote class="inline_help">
+    <p>The timeout after which <em>array_start.sh</em> is not executed if <strong><em>/mnt/user</em></strong> is still not available.</p>
+    <p>This timeout can be set to -1 to always execute <em>array_start.sh</em> regardless of <strong><em>/mnt/user</em></strong> being available or not.</p>
+    </blockquote>
+
+    <dl>
+        <dt>mergerFS Scripting - Array Start Script Timeout:</dt>
         <dd>
             <input id="TIMERSTART" type="text" class="narrow" name="TIMERSTART" maxlength="30" value="<?=$mergerfsp_timer_start?>">seconds
         </dd>
@@ -69,7 +81,7 @@ Markdown="false"
     </blockquote>
 
     <dl>
-        <dt>mergerFS Scripting - Array Stop Timeout:</dt>
+        <dt>mergerFS Scripting - Array Stop Script Timeout:</dt>
         <dd>
             <input id="TIMERSTOP" type="text" class="narrow" name="TIMERSTOP" maxlength="30" value="<?=$mergerfsp_timer_stop?>">seconds
         </dd>

@@ -14,8 +14,10 @@ if [ ! -d $BOOT/scripts ]; then
     mkdir $BOOT/scripts
 fi
 
-cp -nr $DOCROOT/mergerfs/* $BOOT/scripts >/dev/null 2>&1
-cp -rf $BOOT/scripts/* /etc/mergerfsp >/dev/null 2>&1
+cp -n $DOCROOT/default.cfg $BOOT/mergerfsp.cfg
+
+cp -nr $DOCROOT/mergerfs/* $BOOT/scripts/ >/dev/null 2>&1
+cp -rf $BOOT/scripts/* /etc/mergerfsp/ >/dev/null 2>&1
 
 chmod 755 /etc/mergerfsp
 chown root:root /etc/mergerfsp

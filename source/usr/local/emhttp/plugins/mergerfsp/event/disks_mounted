@@ -1,6 +1,9 @@
 #!/bin/bash
 
-trap "exit 0" SIGTERM
+CONFIG="/boot/config/plugins/mergerfsp/mergerfsp.cfg"
+[ -e "$CONFIG" ] && source $CONFIG
+
+TIMERSTARTKILL=$((TIMERSTART+10))
 
 if [ -x /etc/mergerfsp/array_start.sh ]; then
 
@@ -16,7 +19,17 @@ if [ -x /etc/mergerfsp/array_start.sh ]; then
 
     if [ -d /mnt/user ]; then
         echo "Executing mergerFS array start script (disks_mounted)..." | logger
-        /etc/mergerfsp/array_start.sh 2>&1 | logger
+
+        timeout --signal=15 --kill-after=$TIMERSTARTKILL /etc/mergerfsp/array_start.sh 2>&1 | logger
+        CMDRET="${PIPESTATUS[0]}"
+
+        if [ "$CMDRET" -eq 124 ]; then
+            echo "mergerFS error: The mergerFS array start script has timed out and was stopped with SIGTERM." | logger
+        elif [ "$CMDRET" -eq 137 ]; then
+            echo "mergerFS error: The mergerFS array start script has timed out, was unresponsive to SIGTERM and eventually killed with SIGKILL." | logger
+        elif [ ! "$CMDRET" -eq 0 ]; then
+            echo "mergerFS error: The mergerFS array start script has returned with a non-zero exit code ($CMDRET)." | logger
+        fi
     else
         echo "mergerFS warning: /mnt/user never became available (within a 20 seconds timeout)." | logger
         echo "mergerFS warning: The mergerFS array start script has therefore not been executed." | logger

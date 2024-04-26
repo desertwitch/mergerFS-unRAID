@@ -21,7 +21,7 @@ TIMERSTARTKILL=$((TIMERSTART+10))
 if [ -x /etc/mergerfsp/array_start_complete.sh ]; then
     echo "mergerFS -- array_start_complete.sh is now executing (event: started, timeout: ${TIMERSTART}s)..." | logger -t "mergerfs-plugin"
 
-    timeout "--kill-after=$TIMERSTARTKILL" "$TIMERSTART" /etc/mergerfsp/array_start_complete.sh 2>&1 | logger -t "mergerfs-plugin"
+    timeout "--kill-after=$TIMERSTARTKILL" "$TIMERSTART" /etc/mergerfsp/array_start_complete.sh 2>&1 | logger -t "array_start_complete.sh"
     CMDRET="${PIPESTATUS[0]}"
 
     if [ "$CMDRET" -eq 124 ]; then

@@ -65,7 +65,7 @@ Markdown="false"
     </dl>
 
     <blockquote class="inline_help">
-    <p>The timeout after which <em><strong>array_start.sh</strong></em> is not executed if <strong><em>/mnt/user</em></strong> is still not available at that time.</p>
+    <p>The timeout after which <em><strong>array_start.sh</strong></em> is not executed, if <strong><em>/mnt/user</em></strong> is still not available at that time.</p>
     <p>This timeout can be set to <em><strong>-1</strong></em> to always execute <em><strong>array_start.sh</strong></em>, regardless of <strong><em>/mnt/user</em></strong> being available or not.</p>
     </blockquote>
 

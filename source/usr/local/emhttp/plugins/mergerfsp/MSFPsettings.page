@@ -58,7 +58,7 @@ Markdown="false"
     </dl>
 
     <dl>
-        <dt>mergerFS Scripting - Array Start Mounts Available Timeout :</dt>
+        <dt>mergerFS Scripting - <strong>Array Start</strong> Mounts Available Timeout :</dt>
         <dd>
             <input id="TIMERMOUNTS" type="text" class="narrow" name="TIMERMOUNTS" maxlength="30" value="<?=$mergerfsp_timer_mounts?>">seconds
         </dd>
@@ -70,7 +70,7 @@ Markdown="false"
     </blockquote>
 
     <dl>
-        <dt>mergerFS Scripting - Array Start Script Timeout:</dt>
+        <dt>mergerFS Scripting - <strong>Array Start</strong> Script Timeout:</dt>
         <dd>
             <input id="TIMERSTART" type="text" class="narrow" name="TIMERSTART" maxlength="30" value="<?=$mergerfsp_timer_start?>">seconds
         </dd>
@@ -83,7 +83,7 @@ Markdown="false"
     </blockquote>
 
     <dl>
-        <dt>mergerFS Scripting - Array Stop Script Timeout:</dt>
+        <dt>mergerFS Scripting - <strong>Array Stop</strong> Script Timeout:</dt>
         <dd>
             <input id="TIMERSTOP" type="text" class="narrow" name="TIMERSTOP" maxlength="30" value="<?=$mergerfsp_timer_stop?>">seconds
         </dd>

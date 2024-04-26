@@ -5,6 +5,7 @@ Icon="hdd-o"
 Tag="hdd-o"
 Markdown="false"
 ---
+<? require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php'; ?>
 
 <span style="float:right;margin-right:10px"><a href="https://forums.unraid.net/topic/144999-plugin-mergerfs-for-unraid-support-topic/" target="_blank" title="mergerFS Support Thread"><i class="fa fa-medkit"></i> <u>Support Thread</u></a></span>
 <div style="color:red;"><strong>WARNING:</strong></div>
@@ -27,10 +28,10 @@ Markdown="false"
     <dl>
         <dt>mergerFS available binaries:</dt>
         <dd>
-            <pre>
-            /usr/bin/mergerfs
-            /usr/bin/mergerfs-fusermount
-            </pre>
+<pre>
+/usr/bin/mergerfs
+/usr/bin/mergerfs-fusermount
+</pre>
         </dd>
     </dl>
 
@@ -44,15 +45,15 @@ Markdown="false"
     <dl>
         <dt>mergerFS-Tools available binaries:</dt>
         <dd>
-            <pre>
-            /usr/bin/mergerfs.balance
-            /usr/bin/mergerfs.consolidate
-            /usr/bin/mergerfs.ctl
-            /usr/bin/mergerfs.dedup
-            /usr/bin/mergerfs.dup
-            /usr/bin/mergerfs.fsck
-            /usr/bin/mergerfs.mktrash
-            </pre>
+<pre>
+/usr/bin/mergerfs.balance
+/usr/bin/mergerfs.consolidate
+/usr/bin/mergerfs.ctl
+/usr/bin/mergerfs.dedup
+/usr/bin/mergerfs.dup
+/usr/bin/mergerfs.fsck
+/usr/bin/mergerfs.mktrash
+</pre>
         </dd>
     </dl>
 

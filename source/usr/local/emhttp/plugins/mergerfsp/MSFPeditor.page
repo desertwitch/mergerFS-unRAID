@@ -4,8 +4,8 @@ Tag="cog"
 Markdown="false"
 ---
 <link type="text/css" rel="stylesheet" href="<?=autov('/webGui/styles/jquery.filetree.css');?>">
-<link type="text/css" rel="stylesheet" href="<?=autov('/plugins/dwsnap/css/codemirror.min.css');?>">
-<link type="text/css" rel="stylesheet" href="<?=autov('/plugins/dwsnap/css/dracula.min.css');?>">
+<link type="text/css" rel="stylesheet" href="<?=autov('/plugins/mergerfsp/css/codemirror.min.css');?>">
+<link type="text/css" rel="stylesheet" href="<?=autov('/plugins/mergerfsp/css/dracula.min.css');?>">
 
 <style type="text/css">
     .CodeMirror { border: 1px solid #eee; cursor: text; margin-top: 15px; margin-bottom: 10px; }
@@ -36,9 +36,9 @@ Markdown="false"
 </dl>
 
 <script src="<?=autov('/webGui/javascript/jquery.filetree.js');?>"></script>
-<script src="<?=autov('/plugins/dwsnap/js/codemirror.min.js');?>"></script>
-<script src="<?=autov('/plugins/dwsnap/js/autorefresh.min.js');?>"></script>
-<script src="<?=autov('/plugins/dwsnap/js/shell.min.js');?>"></script>
+<script src="<?=autov('/plugins/mergerfsp/js/codemirror.min.js');?>"></script>
+<script src="<?=autov('/plugins/mergerfsp/js/autorefresh.min.js');?>"></script>
+<script src="<?=autov('/plugins/mergerfsp/js/shell.min.js');?>"></script>
 
 <script>
 $(function(){

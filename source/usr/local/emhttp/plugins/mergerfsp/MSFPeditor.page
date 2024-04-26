@@ -3,8 +3,9 @@ Title="mergerFS Scripting"
 Tag="cog"
 Markdown="false"
 ---
-<link rel="stylesheet" href="<?=autov('/plugins/mergerfsp/css/codemirror/codemirror.min.css');?>">
-<link rel="stylesheet" href="<?=autov('/plugins/mergerfsp/css/codemirror/dracula.min.css');?>">
+<link type="text/css" rel="stylesheet" href="<?=autov('/webGui/styles/jquery.filetree.css');?>">
+<link type="text/css" rel="stylesheet" href="<?=autov('/plugins/dwsnap/css/codemirror.min.css');?>">
+<link type="text/css" rel="stylesheet" href="<?=autov('/plugins/dwsnap/css/dracula.min.css');?>">
 
 <style type="text/css">
     .CodeMirror { border: 1px solid #eee; cursor: text; margin-top: 15px; margin-bottom: 10px; }
@@ -12,11 +13,13 @@ Markdown="false"
     .errortext {color: #EF3D47;display: none;}
     .fileTree {color:#486dba;width:305px;max-height:150px;overflow:scroll;position:absolute;z-index:100;display:none;}
 </style>
-<link type="text/css" rel="stylesheet" href="<?=autov('/webGui/styles/jquery.filetree.css');?>">
+
 <span style="float:right;margin-right:10px"><a href="https://github.com/trapexit/mergerfs#readme" target="_blank" title="mergerFS Documentation"><i class="fa fa-file-text-o"></i> <u>mergerFS Documentation</u></a> / <a href="https://github.com/trapexit/mergerfs-tools#readme" target="_blank" title="mergerFS-Tools Documentation"><i class="fa fa-file-text-o"></i> <u>mergerFS-Tools Documentation</u></a></span>
 <div>You can use the mergerFS binaries anywhere on your UNRAID system, this editor simply aims to provide a basic way for your scripts to persist any system reboots.</div>
 <div>For more granular scripting, such as using cronjobs or other event hooks than those available below, please also check out the "User Scripts" addon on Community Applications.</div>
+
 <br>
+
 <form id="editform" method="POST">
 <img id="editfolder" style="cursor:pointer;margin-left: 10px;" src="/webGui/images/explore.png" >
 
@@ -32,34 +35,22 @@ Markdown="false"
 </form>
 </dl>
 
-<script src="<?=autov('/plugins/mergerfsp/js/codemirror/codemirror.min.js');?>"></script>
-
-<script src="<?=autov('/plugins/mergerfsp/js/codemirror/autorefresh.min.js');?>"></script>
-
 <script src="<?=autov('/webGui/javascript/jquery.filetree.js');?>"></script>
-
+<script src="<?=autov('/plugins/dwsnap/js/codemirror.min.js');?>"></script>
+<script src="<?=autov('/plugins/dwsnap/js/autorefresh.min.js');?>"></script>
+<script src="<?=autov('/plugins/dwsnap/js/shell.min.js');?>"></script>
 
 <script>
 $(function(){
     $('#btnCancel').click(function() {
-        $.cookie('one', 'tab1', { expires:null, path: '/'});
         location = '/Settings/MSFPsettings';
     });
 
     var editor = CodeMirror.fromTextArea($('#editdata')[0], {
         theme: '<?=($display["theme"] == 'white' || $display["theme"] == 'azure') ? "default" : "dracula";?>',
-        mode: 'properties',
+        mode: 'shell',
         lineNumbers: true,
-        autoRefresh: true,
-        gutters: ['CodeMirror-linenumbers'],
-        extraKeys: {
-            'Ctrl-Space': 'autocomplete'
-        },
-        hintOptions: {}
-    });
-
-    $('#tab2').click(function () {
-        editor.refresh();
+        autoRefresh: true
     });
 
     $('#editfile').fileTreeAttach(null, null, function(file) {

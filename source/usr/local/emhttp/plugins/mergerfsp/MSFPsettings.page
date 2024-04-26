@@ -65,7 +65,7 @@ Markdown="false"
     </dl>
 
     <blockquote class="inline_help">
-    <p>The timeout after which <em><strong>array_start.sh</strong></em> is not executed if <strong><em>/mnt/user</em></strong> is still not available (at that time).</p>
+    <p>The timeout after which <em><strong>array_start.sh</strong></em> is not executed if <strong><em>/mnt/user</em></strong> is still not available at that time.</p>
     <p>This timeout can be set to <em><strong>-1</strong></em> to always execute <em><strong>array_start.sh</strong></em>, regardless of <strong><em>/mnt/user</em></strong> being available or not.</p>
     </blockquote>
 
@@ -78,7 +78,7 @@ Markdown="false"
 
     <blockquote class="inline_help">
     <p>The maximum execution time for the <em><strong>array_start.sh</strong></em> and <em><strong>array_start_complete.sh</strong></em> scripts before they are stopped with <em><strong>SIGTERM</strong></em>.</p>
-    <p>This timeout prevents the array start routine to dead-lock in case of a failing, stuck mergerFS command or due to a user programming mistake in the script.</p>
+    <p>This timeout prevents the array start routine to dead-lock in case of a stuck mergerFS command or due to a user programming mistake in a script.</p>
     <p>If the scripts are not responsive to <em><strong>SIGTERM</strong></em>, another 10 seconds more is waited and then the scripts are hard-killed with <em><strong>SIGKILL</strong></em>.</p>
     </blockquote>
 
@@ -91,7 +91,7 @@ Markdown="false"
 
     <blockquote class="inline_help">
     <p>The maximum execution time for the <em><strong>array_stop.sh</strong></em> and <em><strong>array_stop_complete.sh</strong></em> scripts before they are stopped with <em><strong>SIGTERM</strong></em>.</p>
-    <p>This timeout prevents the array stop routine to dead-lock in case of a failing, stuck mergerFS command or due to a user programming mistake in the script.</p>
+    <p>This timeout prevents the array stop routine to dead-lock in case of a stuck mergerFS command or due to a user programming mistake in a script.</p>
     <p>If the scripts are not responsive to <em><strong>SIGTERM</strong></em>, another 10 seconds more is waited and then the scripts are hard-killed with <em><strong>SIGKILL</strong></em>.</p>
     </blockquote>
 

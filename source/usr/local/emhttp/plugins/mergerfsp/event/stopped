@@ -6,18 +6,18 @@ CONFIG="/boot/config/plugins/mergerfsp/mergerfsp.cfg"
 TIMERSTOPKILL=$((TIMERSTOP+10))
 
 if [ -x /etc/mergerfsp/array_stop_complete.sh ]; then
-    echo "mergerFS -- array_stop_complete.sh is now executing (event: stopped, timeout: ${TIMERSTOP}s)..." | logger -t "mergerfsp.scripts"
+    echo "mergerFS -- array_stop_complete.sh is now executing (event: stopped, timeout: ${TIMERSTOP}s)..." | logger -t "mergerfs-plugin"
 
-    timeout "--kill-after=$TIMERSTOPKILL" "$TIMERSTOP" /etc/mergerfsp/array_stop_complete.sh 2>&1 | logger -t "mergerfsp.scripts"
+    timeout "--kill-after=$TIMERSTOPKILL" "$TIMERSTOP" /etc/mergerfsp/array_stop_complete.sh 2>&1 | logger -t "mergerfs-plugin"
     CMDRET="${PIPESTATUS[0]}"
 
     if [ "$CMDRET" -eq 124 ]; then
-        echo "mergerFS error -- array_stop_complete.sh has timed out after ${TIMERSTOP}s and was stopped with SIGTERM." | logger -t "mergerfsp.scripts"
+        echo "mergerFS error -- array_stop_complete.sh has timed out after ${TIMERSTOP}s and was stopped with SIGTERM." | logger -t "mergerfs-plugin"
     elif [ "$CMDRET" -eq 137 ]; then
-        echo "mergerFS error -- array_stop_complete.sh has timed out after ${TIMERSTOP}s, ignored SIGTERM and was killed with SIGKILL." | logger -t "mergerfsp.scripts"
+        echo "mergerFS error -- array_stop_complete.sh has timed out after ${TIMERSTOP}s, ignored SIGTERM and was killed with SIGKILL." | logger -t "mergerfs-plugin"
     elif [ ! "$CMDRET" -eq 0 ]; then
-        echo "mergerFS error -- array_stop_complete.sh has returned with a non-zero exit code ($CMDRET)." | logger -t "mergerfsp.scripts"
+        echo "mergerFS error -- array_stop_complete.sh has returned with a non-zero exit code ($CMDRET)." | logger -t "mergerfs-plugin"
     else
-        echo "mergerFS -- array_stop_complete.sh has been executed with success." | logger -t "mergerfsp.scripts"
+        echo "mergerFS -- array_stop_complete.sh has been executed with success." | logger -t "mergerfs-plugin"
     fi
 fi

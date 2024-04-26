@@ -18,22 +18,22 @@ if [ -x /etc/mergerfsp/array_start.sh ]; then
     fi
 
     if [ ! "$TIMERMOUNTS" -ge 0 ] || [ -d /mnt/user ]; then
-        echo "mergerFS -- array_start.sh is now executing (event: disks_mounted, timeout: ${TIMERSTART}s)..." | logger -t "mergerfsp.scripts"
+        echo "mergerFS -- array_start.sh is now executing (event: disks_mounted, timeout: ${TIMERSTART}s)..." | logger -t "mergerfs-plugin"
 
-        timeout "--kill-after=$TIMERSTARTKILL" "$TIMERSTART" /etc/mergerfsp/array_start.sh 2>&1 | logger -t "mergerfsp.scripts"
+        timeout "--kill-after=$TIMERSTARTKILL" "$TIMERSTART" /etc/mergerfsp/array_start.sh 2>&1 | logger -t "mergerfs-plugin"
         CMDRET="${PIPESTATUS[0]}"
 
         if [ "$CMDRET" -eq 124 ]; then
-            echo "mergerFS error -- array_start.sh has timed out after ${TIMERSTART}s and was stopped with SIGTERM." | logger -t "mergerfsp.scripts"
+            echo "mergerFS error -- array_start.sh has timed out after ${TIMERSTART}s and was stopped with SIGTERM." | logger -t "mergerfs-plugin"
         elif [ "$CMDRET" -eq 137 ]; then
-            echo "mergerFS error -- array_start.sh has timed out after ${TIMERSTART}s, ignored SIGTERM and was killed with SIGKILL." | logger -t "mergerfsp.scripts"
+            echo "mergerFS error -- array_start.sh has timed out after ${TIMERSTART}s, ignored SIGTERM and was killed with SIGKILL." | logger -t "mergerfs-plugin"
         elif [ ! "$CMDRET" -eq 0 ]; then
-            echo "mergerFS error -- array_start.sh has returned with a non-zero exit code ($CMDRET)." | logger -t "mergerfsp.scripts"
+            echo "mergerFS error -- array_start.sh has returned with a non-zero exit code ($CMDRET)." | logger -t "mergerfs-plugin"
         else
-            echo "mergerFS -- array_start.sh has been executed with success." | logger -t "mergerfsp.scripts"
+            echo "mergerFS -- array_start.sh has been executed with success." | logger -t "mergerfs-plugin"
         fi
     else
-        echo "mergerFS error -- /mnt/user never became available (within a $TIMERMOUNTS seconds timeout)." | logger -t "mergerfsp.scripts"
-        echo "mergerFS error -- array_start.sh has therefore not been executed." | logger -t "mergerfsp.scripts"
+        echo "mergerFS error -- /mnt/user never became available (within a $TIMERMOUNTS seconds timeout)." | logger -t "mergerfs-plugin"
+        echo "mergerFS error -- array_start.sh has therefore not been executed." | logger -t "mergerfs-plugin"
     fi
 fi

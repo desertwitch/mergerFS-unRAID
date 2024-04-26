@@ -12,9 +12,9 @@ if [ -x /etc/mergerfsp/array_start_complete.sh ]; then
     CMDRET="${PIPESTATUS[0]}"
 
     if [ "$CMDRET" -eq 124 ]; then
-        echo "mergerFS error -- array_start_complete.sh has timed out after $TIMERSTART seconds and was stopped with SIGTERM." | logger -t "mergerfsp.scripts"
+        echo "mergerFS error -- array_start_complete.sh has timed out after ${TIMERSTART}s and was stopped with SIGTERM." | logger -t "mergerfsp.scripts"
     elif [ "$CMDRET" -eq 137 ]; then
-        echo "mergerFS error -- array_start_complete.sh has timed out after $TIMERSTART seconds, was unresponsive to SIGTERM and killed with SIGKILL." | logger -t "mergerfsp.scripts"
+        echo "mergerFS error -- array_start_complete.sh has timed out after ${TIMERSTART}s, ignored SIGTERM and was killed with SIGKILL." | logger -t "mergerfsp.scripts"
     elif [ ! "$CMDRET" -eq 0 ]; then
         echo "mergerFS error -- array_start_complete.sh has returned with a non-zero exit code ($CMDRET)." | logger -t "mergerfsp.scripts"
     else

@@ -35,7 +35,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 
 <br>
 
-<form markdown="0" id="dwsnap-settings" name="dwsnap_settings" method="POST" action="/update.php" target="progressFrame">
+<form markdown="0" id="mergerfsp-settings" name="mergerfsp_settings" method="POST" action="/update.php" target="progressFrame">
     <input type="hidden" name="#file" value="mergerfsp/mergerfsp.cfg">
 
     <dl>

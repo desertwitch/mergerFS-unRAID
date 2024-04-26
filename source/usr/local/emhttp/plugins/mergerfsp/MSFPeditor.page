@@ -87,6 +87,13 @@ $(function(){
         );
     });
 
+    $('#editfile').val("/etc/mergerfsp/array_start.sh");
+    var EditfileDefault = $('#editfile').val();
+    $.getJSON('/plugins/mergerfsp/include/mergerfsp_edit.php', {editfile: EditfileDefault}, function (data) {
+            editor.setValue(data);
+        }
+    );
+
     // save config
     $('#btnSubmit').click(function () {
         editor.save();

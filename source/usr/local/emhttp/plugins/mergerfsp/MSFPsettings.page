@@ -5,7 +5,27 @@ Icon="hdd-o"
 Tag="hdd-o"
 Markdown="false"
 ---
-<? require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php'; ?>
+<? 
+/* Copyright Derek Macias (parts of code from NUT package)
+ * Copyright macester (parts of code from NUT package)
+ * Copyright gfjardim (parts of code from NUT package)
+ * Copyright SimonF (parts of code from NUT package)
+ * Copyright desertwitch
+ *
+ * Copyright Dan Landon
+ * Copyright Bergware International
+ * Copyright Lime Technology
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License 2
+ * as published by the Free Software Foundation.
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ */
+require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
+?>
 
 <span style="float:right;margin-right:10px"><a href="https://forums.unraid.net/topic/144999-plugin-mergerfs-for-unraid-support-topic/" target="_blank" title="mergerFS Support Thread"><i class="fa fa-medkit"></i> <u>Support Thread</u></a></span>
 <div style="color:red;"><strong>WARNING:</strong></div>

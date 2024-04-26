@@ -79,6 +79,7 @@ removepkg &plgPATH;/*.txz
 
 rm -rf &plgPATH;
 rm -rf &emhttp;
+rm -rf /etc/mergerfsp/
 
 echo ""
 echo "-----------------------------------------------------------"

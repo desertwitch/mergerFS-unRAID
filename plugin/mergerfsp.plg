@@ -18,6 +18,9 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.04.26
+- new: added timeout settings for array event hook scripts to prevent array dead-locks
+- new: updated GUI dependencies and enabled Bash syntax highlighting in GUI script editor
 ###2024.03.26
 - new: mergerFS binaries updated to latest release version 2.40.2
 ###2024.02.23

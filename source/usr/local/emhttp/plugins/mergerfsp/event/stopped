@@ -8,7 +8,7 @@ TIMERSTOPKILL=$((TIMERSTOP+10))
 if [ -x /etc/mergerfsp/array_stop_complete.sh ]; then
     echo "mergerFS: array_stop_complete.sh is now executing (event: stopped)..." | logger -t "mergerfsp"
 
-    timeout --kill-after=$TIMERSTOPKILL /etc/mergerfsp/array_stop_complete.sh 2>&1 | logger -t "mergerfsp"
+    timeout "--kill-after=$TIMERSTOPKILL" "$TIMERSTOP" /etc/mergerfsp/array_stop_complete.sh 2>&1 | logger -t "mergerfsp"
     CMDRET="${PIPESTATUS[0]}"
 
     if [ "$CMDRET" -eq 124 ]; then

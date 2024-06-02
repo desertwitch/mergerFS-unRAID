@@ -18,4 +18,4 @@ Copyrights UNRAID Plugin System: Dan Landon, Bergware International, Lime Techno
 
 This project continues to be licensed under GPL2, GPL3 and/or ISC where applicable - see respective LICENSE files!
 
-mergerFS Source Code: https://github.com/trapexit/mergerfs
+<sub>mergerFS Source Code: https://github.com/trapexit/mergerfs</sub>

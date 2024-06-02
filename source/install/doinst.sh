@@ -17,8 +17,8 @@ BOOT="/boot/config/plugins/mergerfsp"
 DOCROOT="/usr/local/emhttp/plugins/mergerfsp"
 
 # Update file permissions of scripts
-chmod +0755 $DOCROOT/event/*
-chmod +0755 $DOCROOT/mergerfs/*
+chmod 755 $DOCROOT/event/*
+chmod 755 $DOCROOT/mergerfs/*
 
 if [ ! -d /etc/mergerfsp ]; then
     mkdir /etc/mergerfsp

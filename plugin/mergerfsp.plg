@@ -18,6 +18,8 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.06.22
+- new: added front page dashboards for active pools (for versions 6.12+)
 ###2024.04.26
 - new: added timeout settings for array event hook scripts to prevent array dead-locks
 - new: updated GUI dependencies and enabled Bash syntax highlighting in GUI script editor

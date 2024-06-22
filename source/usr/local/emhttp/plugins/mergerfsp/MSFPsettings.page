@@ -77,8 +77,24 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
         </dd>
     </dl>
 
+    <?if(version_compare(parse_ini_file('/etc/unraid-version')['version'],'6.12.0-beta5', '>')):?>
     <dl>
-        <dt>mergerFS Scripting - <strong>Array Start</strong> Mounts Available Timeout :</dt>
+        <dt>mergerFS Dashboards:</dt>
+        <dd>
+            <select id="DASHBOARDS" name="DASHBOARDS" size="1">
+                <?=mk_option($mergerfsp_dashboards, "disable", "No");?>
+                <?=mk_option($mergerfsp_dashboards, "enable", "Yes");?>
+            </select>
+        </dd>
+    </dl>
+
+    <blockquote class="inline_help">
+    <p>This setting controls if the active mergerFS pools should also be shown as miniature dashboards on Unraid's front page.</p>
+    </blockquote>
+    <?endif;?>
+
+    <dl>
+        <dt>mergerFS Scripting - <strong>Array Start</strong> Mounts Available Timeout:</dt>
         <dd>
             <input id="TIMERMOUNTS" type="text" class="narrow" name="TIMERMOUNTS" maxlength="30" value="<?=$mergerfsp_timer_mounts?>">seconds
         </dd>

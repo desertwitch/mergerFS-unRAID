@@ -1,0 +1,61 @@
+Menu="Buttons:195"
+Link="nav-user"
+---
+<?
+/* Copyright Derek Macias (parts of code from NUT package)
+ * Copyright macester (parts of code from NUT package)
+ * Copyright gfjardim (parts of code from NUT package)
+ * Copyright SimonF (parts of code from NUT package)
+ * Copyright desertwitch
+ *
+ * Copyright Dan Landon
+ * Copyright Bergware International
+ * Copyright Lime Technology
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License 2
+ * as published by the Free Software Foundation.
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ */
+?>
+<?if(version_compare(parse_ini_file('/etc/unraid-version')['version'],'6.12.0-beta5', '>')):?>
+<?if(stripos($path, "dashboard") !== false && $mergerfsp_dashboards == "enable"):?>
+<?
+$msfp_mtab = file_get_contents("/etc/mtab") ?? "";
+$msfp_mounts = [];
+$msfp_mount_id = 0;
+$msfp_mount_re = '/ (.*?) fuse.mergerfs/m';
+preg_match_all($msfp_mount_re, $msfp_mtab, $msfp_mounts, PREG_SET_ORDER);
+
+foreach ($msfp_mounts as $msfp_mount) {
+    try {
+        if(is_dir(trim($msfp_mount[1]))) {
+            $msfp_mount_id = $msfp_mount_id + 1;
+            $msfp_mount_point = basename(trim(htmlspecialchars($msfp_mount[1])));
+            $msfp_mount_disk_util = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $5}' 2>/dev/null") ?? "-"));
+            $msfp_mount_disk_free = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-"));
+            $msfp_mount_disk_used = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-"));
+            $msfp_mount_disk_total = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-"));
+
+            $pluginname = "msfp" . $msfp_mount_id; 
+            $mytiles[$pluginname]['column2'] = <<<EOT
+            <tbody id="$pluginname" title="$msfp_mount_point">
+            <tr><td>
+            <i class="icon-disk f32"></i>
+            <div class="section">MergerFS: $msfp_mount_point<br><span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free Space: $msfp_mount_disk_free / Used Space: $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span></div>
+            </td></tr>
+            </tbody>
+EOT;
+        }
+    } catch (Throwable $e) { // For PHP 7
+        continue;
+    } catch (Exception $e) { // For PHP 5
+        continue;
+    }
+}
+?>
+<?endif;?>
+<?endif;?>

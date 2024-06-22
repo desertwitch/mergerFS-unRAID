@@ -25,6 +25,31 @@ Link="nav-user"
 <?require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';?>
 <?if(stripos($path, "dashboard") !== false && $mergerfsp_dashboards == "enable"):?>
 <?
+
+function humanFileSize($sizeObj,$unit="") {
+    try {
+        $size = intval($sizeObj);
+        if($size) {
+            if( (!$unit && $size >= 1000000000000) || $unit == "TB")
+                return number_format(($size/1000000000000),2)." TB";
+            if( (!$unit && $size >= 1000000000) || $unit == "GB")
+                return number_format(($size/1000000000),2)." GB";
+            if( (!$unit && $size >= 1000000) || $unit == "MB")
+                return number_format(($size/1000000),2)." MB";
+            if( (!$unit && $size >= 1000) || $unit == "KB")
+                return number_format(($size/1000),2)." KB";
+            return number_format($size)." B";
+        } else {
+            return "-";
+        }
+    } catch (Throwable $e) { // For PHP 7
+        return "-";
+    } catch (Exception $e) { // For PHP 5
+        return "-";
+    }
+}
+
+
 $msfp_mtab = file_get_contents("/etc/mtab") ?? "";
 $msfp_mounts = [];
 $msfp_mount_id = 0;
@@ -36,10 +61,10 @@ foreach ($msfp_mounts as $msfp_mount) {
         if(is_dir(trim($msfp_mount[1]))) {
             $msfp_mount_id = $msfp_mount_id + 1;
             $msfp_mount_point = basename(trim(htmlspecialchars($msfp_mount[1])));
-            $msfp_mount_disk_util = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $5}' 2>/dev/null") ?? "-"));
-            $msfp_mount_disk_free = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-"));
-            $msfp_mount_disk_used = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-"));
-            $msfp_mount_disk_total = trim(htmlspecialchars(shell_exec("df -h " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-"));
+            $msfp_mount_disk_util = trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $5}' 2>/dev/null") ?? "-"));
+            $msfp_mount_disk_free = humanFileSize(trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-")));
+            $msfp_mount_disk_used = humanFileSize(trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));
+            $msfp_mount_disk_total = humanFileSize(trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-")));
 
             $pluginname = "msfp" . $msfp_mount_id; 
             $mytiles[$pluginname]['column2'] = <<<EOT

@@ -46,7 +46,7 @@ foreach ($msfp_mounts as $msfp_mount) {
             <tbody id="$pluginname" title="$msfp_mount_point">
             <tr><td>
             <i class="icon-disk f32"></i>
-            <div class="section">MergerFS: $msfp_mount_point<br><span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free Space: $msfp_mount_disk_free / Used Space: $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span></div>
+            <div class="section">MergerFS: $msfp_mount_point<br><span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free: $msfp_mount_disk_free / $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span></div>
             </td></tr>
             </tbody>
 EOT;

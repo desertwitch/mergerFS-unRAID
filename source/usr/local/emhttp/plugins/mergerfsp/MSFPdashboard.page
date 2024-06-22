@@ -25,7 +25,6 @@ Link="nav-user"
 <?require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';?>
 <?if(stripos($path, "dashboard") !== false && $mergerfsp_dashboards == "enable"):?>
 <?
-
 function humanFileSize($sizeObj,$unit="") {
     try {
         $size = intval($sizeObj);
@@ -48,7 +47,6 @@ function humanFileSize($sizeObj,$unit="") {
         return "-";
     }
 }
-
 
 $msfp_mtab = file_get_contents("/etc/mtab") ?? "";
 $msfp_mounts = [];

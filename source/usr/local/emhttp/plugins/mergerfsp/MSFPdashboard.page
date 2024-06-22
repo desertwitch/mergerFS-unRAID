@@ -22,6 +22,7 @@ Link="nav-user"
  */
 ?>
 <?if(version_compare(parse_ini_file('/etc/unraid-version')['version'],'6.12.0-beta5', '>')):?>
+<?require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';?>
 <?if(stripos($path, "dashboard") !== false && $mergerfsp_dashboards == "enable"):?>
 <?
 $msfp_mtab = file_get_contents("/etc/mtab") ?? "";

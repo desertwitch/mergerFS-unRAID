@@ -79,7 +79,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 
     <?if(version_compare(parse_ini_file('/etc/unraid-version')['version'],'6.12.0-beta5', '>')):?>
     <dl>
-        <dt>mergerFS Dashboards:</dt>
+        <dt>mergerFS - Front Page Dashboards:</dt>
         <dd>
             <select id="DASHBOARDS" name="DASHBOARDS" size="1">
                 <?=mk_option($mergerfsp_dashboards, "disable", "No");?>

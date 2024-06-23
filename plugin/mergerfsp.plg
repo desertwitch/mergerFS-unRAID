@@ -18,6 +18,8 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.06.23
+- fix: renamed generic function names to avoid declaration collisions with other plugins
 ###2024.06.22a
 - new: added front page dashboards for active pools (for versions 6.12+)
 - fix: changed units from KiB to KB

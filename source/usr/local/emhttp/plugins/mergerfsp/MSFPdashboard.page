@@ -25,7 +25,7 @@ Link="nav-user"
 <?require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';?>
 <?if(stripos($path, "dashboard") !== false && $mergerfsp_dashboards == "enable"):?>
 <?
-function humanFileSize($sizeObj,$unit="") {
+function msfp_humanFileSize($sizeObj,$unit="") {
     try {
         $size = intval($sizeObj);
         if($size) {
@@ -62,9 +62,9 @@ foreach ($msfp_mounts as $msfp_mount) {
 
             $msfp_mount_name = htmlspecialchars(trim(basename($msfp_mount_point)));
             $msfp_mount_disk_util = htmlspecialchars(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $5}' 2>/dev/null") ?? "-"));
-            $msfp_mount_disk_free = htmlspecialchars(humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-")));
-            $msfp_mount_disk_used = htmlspecialchars(humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));
-            $msfp_mount_disk_total = htmlspecialchars(humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-")));
+            $msfp_mount_disk_free = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-")));
+            $msfp_mount_disk_used = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));
+            $msfp_mount_disk_total = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-")));
 
             $pluginname = "msfp" . $msfp_mount_id; 
             $mytiles[$pluginname]['column2'] = <<<EOT

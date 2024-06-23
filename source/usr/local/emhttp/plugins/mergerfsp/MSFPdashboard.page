@@ -56,20 +56,22 @@ preg_match_all($msfp_mount_re, $msfp_mtab, $msfp_mounts, PREG_SET_ORDER);
 
 foreach ($msfp_mounts as $msfp_mount) {
     try {
-        if(is_dir(trim($msfp_mount[1]))) {
+        $msfp_mount_point = trim($msfp_mount[1]);
+        if(is_dir($msfp_mount_point)) {
             $msfp_mount_id = $msfp_mount_id + 1;
-            $msfp_mount_point = basename(trim(htmlspecialchars($msfp_mount[1])));
-            $msfp_mount_disk_util = trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $5}' 2>/dev/null") ?? "-"));
-            $msfp_mount_disk_free = humanFileSize(trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-")));
-            $msfp_mount_disk_used = humanFileSize(trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));
-            $msfp_mount_disk_total = humanFileSize(trim(htmlspecialchars(shell_exec("df -B1 " . $msfp_mount[1] . " 2>/dev/null | grep " . $msfp_mount[1] . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-")));
+
+            $msfp_mount_name = htmlspecialchars(trim(basename($msfp_mount_point)));
+            $msfp_mount_disk_util = htmlspecialchars(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $5}' 2>/dev/null") ?? "-"));
+            $msfp_mount_disk_free = htmlspecialchars(humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-")));
+            $msfp_mount_disk_used = htmlspecialchars(humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));
+            $msfp_mount_disk_total = htmlspecialchars(humanFileSize(trim(shell_exec("df -B1 " . $msfp_mount_point . " 2>/dev/null | grep " . $msfp_mount_point . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-")));
 
             $pluginname = "msfp" . $msfp_mount_id; 
             $mytiles[$pluginname]['column2'] = <<<EOT
-            <tbody id="$pluginname" title="$msfp_mount_point">
+            <tbody id="$pluginname" title="$msfp_mount_name">
             <tr><td>
             <i class="icon-disk f32"></i>
-            <div class="section">MergerFS: $msfp_mount_point<br><span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free: $msfp_mount_disk_free / $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span></div>
+            <div class="section">MergerFS: $msfp_mount_name<br><span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free: $msfp_mount_disk_free / $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span></div>
             </td></tr>
             </tbody>
 EOT;

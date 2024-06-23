@@ -70,8 +70,8 @@ run the post-installation scripts
 <INLINE> 
 echo ""
 echo "-------------------------------------------------------------"
-echo " mergerFS for UNRAID (&version;) has been installed."
-echo " Copyright 2023 - &author;"
+echo " mergerFS for UNRAID has been installed."
+echo " Version: &version; / Plugin Maintainer: &author;"
 echo "-------------------------------------------------------------"
 echo ""
 </INLINE>
@@ -91,8 +91,8 @@ rm -rf /etc/mergerfsp/
 
 echo ""
 echo "-----------------------------------------------------------"
-echo " mergerFS for UNRAID (&version;) has been removed."
-echo " Copyright 2023 - &author;"
+echo " mergerFS for UNRAID has been removed."
+echo " Version: &version; / Plugin Maintainer: &author;"
 echo "-----------------------------------------------------------"
 echo ""
 </INLINE>

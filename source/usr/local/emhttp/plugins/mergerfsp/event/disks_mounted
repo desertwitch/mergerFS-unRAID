@@ -20,6 +20,7 @@ TIMERSTARTKILL=$((TIMERSTART+10))
 
 if [ -x /etc/mergerfsp/array_start.sh ]; then
     if [ "$TIMERMOUNTS" -gt 0 ]; then
+        echo "mergerFS -- waiting for /mnt/user (event: disks_mounted, timeout: ${TIMERMOUNTS}s)..." | logger -t "mergerfs-plugin"
         TIMER=0
         while [ ! -d /mnt/user ]; do
             sleep 1
@@ -28,6 +29,9 @@ if [ -x /etc/mergerfsp/array_start.sh ]; then
                 break
             fi
         done
+        if [ -d /mnt/user ]; then
+            echo "mergerFS -- /mnt/user is now available, proceeding..." | logger -t "mergerfs-plugin"
+        fi
     fi
 
     if [ ! "$TIMERMOUNTS" -ge 0 ] || [ -d /mnt/user ]; then

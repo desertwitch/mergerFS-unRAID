@@ -19,8 +19,8 @@ CONFIG="/boot/config/plugins/mergerfsp/mergerfsp.cfg"
 TIMERSTARTKILL=$((TIMERSTART+10))
 
 if [ -x /etc/mergerfsp/array_start.sh ]; then
-    if [ "$TIMERMOUNTS" -gt 0 ]; then
-        echo "mergerFS -- waiting for /mnt/user (event: disks_mounted, timeout: ${TIMERMOUNTS}s)..." | logger -t "mergerfs-plugin"
+    if [ ! -d /mnt/user ] && [ "$TIMERMOUNTS" -gt 0 ]; then
+        echo "mergerFS -- /mnt/user is being waited for (event: disks_mounted, timeout: ${TIMERMOUNTS}s)..." | logger -t "mergerfs-plugin"
         TIMER=0
         while [ ! -d /mnt/user ]; do
             sleep 1
@@ -30,7 +30,7 @@ if [ -x /etc/mergerfsp/array_start.sh ]; then
             fi
         done
         if [ -d /mnt/user ]; then
-            echo "mergerFS -- /mnt/user is now available, proceeding..." | logger -t "mergerfs-plugin"
+            echo "mergerFS -- /mnt/user has now become available, proceeding..." | logger -t "mergerfs-plugin"
         fi
     fi
 

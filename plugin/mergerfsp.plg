@@ -18,6 +18,10 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.06.25
+- fix: add additional debugging messages during array startup
+- fix: amend array startup event handling to reduce waits and possible congestions
+- fix: adapt decimal handling in disk space translation functions to unraid standards
 ###2024.06.23
 - fix: renamed generic function names to avoid declaration collisions with other plugins
 ###2024.06.22a

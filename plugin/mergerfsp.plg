@@ -18,6 +18,8 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.06.26
+- fix: improved safeguards against XSS cross-site vulnerabilities
 ###2024.06.25a
 - fix: add additional debugging messages during array startup
 - fix: amend array startup event handling to reduce waits and possible congestions

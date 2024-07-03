@@ -33,12 +33,12 @@ preg_match_all($msfp_pools_mount_re, $msfp_pools_mtab, $msfp_pools_mounts, PREG_
 
 foreach ($msfp_pools_mounts as $msfp_pools_mount) {
     try {
+        $msfp_pools_return = [];
         $msfp_pools_mount_point = trim($msfp_pools_mount[1]);
         $msfp_pools_mount_point_html = htmlspecialchars(strtoupper(trim(basename($msfp_pools_mount_point))));
         $msfp_pools_attr_rows = [];
         $msfp_pools_attr_retval = -1;
-        $msfp_pools_return = [];
-
+        
         $msfp_pools_disk_util = htmlspecialchars(trim(shell_exec("df -B1 " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | awk '{print $5}' 2>/dev/null") ?? "-"));
         $msfp_pools_disk_free = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-")));
         $msfp_pools_disk_used = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));

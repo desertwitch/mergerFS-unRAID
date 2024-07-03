@@ -1,6 +1,6 @@
 Menu="MSFPsettings:2"
-Title="mergerFS Diagnostics"
-Tag="cog"
+Title="mergerFS Runtime Diagnostics"
+Tag="magic"
 Markdown="false"
 ---
 <?
@@ -53,7 +53,7 @@ foreach ($msfp_pools_mounts as $msfp_pools_mount) {
         
         if($msfp_pools_attr_retval === 0 && !empty($msfp_pools_attr_rows)) {
             $msfp_pools_return[] = "<table class='tablesorter mergertable shift'>";
-            $msfp_pools_return[] = "<thead><tr><th colspan='4' style='text-transform:none;'>Mount: <strong>$msfp_pools_mount_point</strong><span style='float:right;'>Free: $msfp_pools_disk_free / $msfp_pools_disk_used used of $msfp_pools_disk_total ($msfp_pools_disk_util)</span></th></tr><tr><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th></tr></thead>";
+            $msfp_pools_return[] = "<thead><tr><th colspan='4' style='text-transform:none;'><strong>$msfp_pools_mount_point</strong><span style='float:right;'>Free: $msfp_pools_disk_free / $msfp_pools_disk_used used of $msfp_pools_disk_total ($msfp_pools_disk_util)</span></th></tr><tr><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th></tr></thead>";
             $msfp_pools_return[] = "<tbody>";
             
             for ($i=0; $i<count($msfp_pools_attr_rows); $i++) {

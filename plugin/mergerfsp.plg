@@ -19,8 +19,8 @@
 <CHANGES>
 ## mergerFS for UNRAID
 ###2024.07.03
-- new: add diagnostics to settings page (ft. extensive information about active pools)
-- new: add shortcut button for settings page to front page dashboards
+- new: add diagnostics to settings page (extensive information about active pools)
+- new: add shortcut button to access the settings page faster (from front page dashboards)
 ###2024.06.26
 - fix: improved safeguards against XSS cross-site vulnerabilities
 ###2024.06.25a

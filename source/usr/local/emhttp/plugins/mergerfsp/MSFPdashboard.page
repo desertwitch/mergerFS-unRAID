@@ -68,10 +68,11 @@ foreach ($msfp_mounts as $msfp_mount) {
 
             $pluginname = "msfp" . $msfp_mount_id; 
             $mytiles[$pluginname]['column2'] = <<<EOT
-            <tbody id="$pluginname" title="$msfp_mount_name">
+            <tbody id="$pluginname" title="mergerFS: $msfp_mount_name">
             <tr><td>
             <i class="icon-disk f32"></i>
-            <div class="section">MergerFS: $msfp_mount_name<br><span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free: $msfp_mount_disk_free / $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span></div>
+            <div class="section">mergerFS: $msfp_mount_name<br><span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free: $msfp_mount_disk_free / $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span></div>
+            <a href='/Settings/MSFPsettings' title="Go to mergerFS Settings"><i class='fa fa-fw fa-cog control'></i></a>
             </td></tr>
             </tbody>
 EOT;

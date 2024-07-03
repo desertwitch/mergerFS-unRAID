@@ -25,13 +25,6 @@ Markdown="false"
 require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_helpers.php';
 ?>
 
-<style type="text/css">
-.mergertable td { 
-    font-size: 1.1rem !important;
-    padding: 0px 20px 0px 6px !important;
-}
-</style>
-
 <?
 $msfp_pools_mtab = file_get_contents("/etc/mtab") ?? "";
 $msfp_pools_mounts = [];
@@ -41,6 +34,7 @@ preg_match_all($msfp_pools_mount_re, $msfp_pools_mtab, $msfp_pools_mounts, PREG_
 foreach ($msfp_pools_mounts as $msfp_pools_mount) {
     try {
         $msfp_pools_mount_point = trim($msfp_pools_mount[1]);
+        $msfp_pools_mount_point_html = htmlspecialchars($msfp_pools_mount_point);
         $msfp_pools_attr_rows = [];
         $msfp_pools_attr_retval = -1;
         $msfp_pools_return = [];
@@ -53,7 +47,7 @@ foreach ($msfp_pools_mounts as $msfp_pools_mount) {
         
         if($msfp_pools_attr_retval === 0 && !empty($msfp_pools_attr_rows)) {
             $msfp_pools_return[] = "<table class='tablesorter mergertable shift'>";
-            $msfp_pools_return[] = "<thead><tr><th colspan='4' style='text-transform:none;'><strong>$msfp_pools_mount_point</strong><span style='float:right;'>Free: $msfp_pools_disk_free / $msfp_pools_disk_used used of $msfp_pools_disk_total ($msfp_pools_disk_util)</span></th></tr><tr><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th></tr></thead>";
+            $msfp_pools_return[] = "<thead><tr><th colspan='4' style='text-transform:none;'><strong>$msfp_pools_mount_point_html</strong><span style='float:right;'>Free: $msfp_pools_disk_free / $msfp_pools_disk_used used of $msfp_pools_disk_total ($msfp_pools_disk_util)</span></th></tr><tr><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th></tr></thead>";
             $msfp_pools_return[] = "<tbody>";
             
             for ($i=0; $i<count($msfp_pools_attr_rows); $i++) {

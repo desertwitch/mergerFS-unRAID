@@ -140,7 +140,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
         <dd>
             <input type="submit" id="btnApply" name="#apply" value="Apply">
             <input type="button" value="Done" onclick="done()">
-            <input id="DEFAULT" type="submit" class="mergertip" name="#default" value="Default" title="Reverts the configuration to the default values.">
+            <input id="DEFAULT" type="submit" class="mergertip" name="#default" value="Default" title="Reverts the configuration to default values.">
         </dd>
     </dl>
 

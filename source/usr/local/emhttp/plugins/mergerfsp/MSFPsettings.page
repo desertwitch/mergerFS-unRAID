@@ -134,7 +134,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 
     <dl>
         <dt>
-            <input id="FLUSHNODES" type="button" class="mergertip" value="FLUSH CACHE" title="This will send invalidation notifications to the kernel for all cached files, causing any unused files to be released from the memory.">
+            <input id="FLUSHNODES" type="button" class="mergertip" value="FLUSH CACHE" title="This will send invalidation notifications to the kernel for all cached files, also causing any unused files to be released from the memory.">
             <input id="GARBAGECOLL" type="button" class="mergertip" value="COLLECT GARBAGE" title="This will trigger a general cleanup of currently unused memory, a more thorough version of what happens every 15 minutes.">
         </dt>
         <dd>

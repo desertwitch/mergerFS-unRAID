@@ -3,14 +3,14 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "mergerfsp">
 <!ENTITY author    "desertwitch">
-<!ENTITY version   "2024.07.03">
+<!ENTITY version   "2024.07.04">
 <!ENTITY launch    "Settings/MSFPsettings">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
-<!ENTITY plgNAME   "mergerfsp-2024.07.03-x86_64-1">
-<!ENTITY plgMD5    "3ff8f557ee53040eb37a955c9d974227">
+<!ENTITY plgNAME   "mergerfsp-2024.07.04-x86_64-1">
+<!ENTITY plgMD5    "bac521c387418aa8328ef2088c75ace7">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 

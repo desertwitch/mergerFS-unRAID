@@ -18,6 +18,7 @@ DOCROOT="/usr/local/emhttp/plugins/mergerfsp"
 
 # Update file permissions of scripts
 chmod 755 $DOCROOT/event/*
+chmod 755 $DOCROOT/scripts/*
 chmod 755 $DOCROOT/mergerfs/*
 
 if [ ! -d /etc/mergerfsp ]; then

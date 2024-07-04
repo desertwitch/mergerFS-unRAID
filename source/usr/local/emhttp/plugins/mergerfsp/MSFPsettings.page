@@ -36,8 +36,8 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 <br>
 
 <form markdown="0" id="mergerfsp-settings" name="mergerfsp_settings" method="POST" action="/update.php" target="progressFrame">
-    <input type="hidden" name="#file" value="mergerfsp/mergerfsp.cfg">
-    <input type="hidden" id="mergerfsp-cmd" name="#command" value="">
+    <input type="hidden" id="mergerfsp-file" name="#file" value="mergerfsp/mergerfsp.cfg">
+    <input type="hidden" id="mergerfsp-cmd" name="#command" value="/usr/local/emhttp/plugins/mergerfsp/scripts/none">
 
     <dl>
         <dt>mergerFS backend:</dt>
@@ -150,8 +150,22 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 <div><strong>Python 3.x is a requirement <u>for mergerFS-Tools</u> and needs to be installed, if not already present on your system (e.g. via NerdTools)</strong></div>
 
 <script>
-showStatus('mergerfs');
 $(function() {
+
+    $('#FLUSHNODES').click(function(){
+        $('#mergerfsp-file').remove();
+        $('#mergerfsp-cmd').val('/usr/local/emhttp/plugins/mergerfsp/scripts/flushnodes');
+        $('#mergerfsp-settings').submit();
+    });
+
+    $('#GARBAGECOLL').click(function(){
+        $('#mergerfsp-file').remove();
+        $('#mergerfsp-cmd').val('/usr/local/emhttp/plugins/mergerfsp/scripts/garbagecoll');
+        $('#mergerfsp-settings').submit();
+    });
+
+    showStatus('mergerfs');
+
     // dynamix plugin update api
     <?if (function_exists('plugin_update_available') && $version = plugin_update_available('mergerfsp')):?>
         showNotice('mergerFS <?=htmlspecialchars($version);?> available. <a>Update</a>','mergerfsp');

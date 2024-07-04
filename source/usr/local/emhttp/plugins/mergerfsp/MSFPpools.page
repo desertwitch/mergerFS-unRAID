@@ -48,7 +48,7 @@ if(!empty($msfp_pools_mounts)) {
             
             if($msfp_pools_attr_retval === 0 && !empty($msfp_pools_attr_rows)) {
                 $msfp_pools_return[] = "<table class='tablesorter mergertable" . ($x === 0 ? " shift" : "") . "'>";
-                $msfp_pools_return[] = "<thead><tr><th colspan='4' style='text-transform:none;'>POOL: <strong>$msfp_pools_mount_point_html</strong><span style='float:right;'>Free: $msfp_pools_disk_free / $msfp_pools_disk_used used of $msfp_pools_disk_total ($msfp_pools_disk_util)</span></th></tr><tr><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th></tr></thead>";
+                $msfp_pools_return[] = "<thead><tr><th colspan='4' style='text-transform:none;'><strong>$msfp_pools_mount_point_html</strong><span style='float:right;'><strong>Free: $msfp_pools_disk_free / $msfp_pools_disk_used used of $msfp_pools_disk_total ($msfp_pools_disk_util)</strong></span></th></tr><tr><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th><th style='width:15%'>Attribute</th><th style='width:35%'>Value</th></tr></thead>";
                 $msfp_pools_return[] = "<tbody>";
                 
                 for ($i=0; $i<count($msfp_pools_attr_rows); $i++) {

@@ -13,5 +13,6 @@
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
 #
-echo "Collecting Garbage..."
-killall --signal USR2 mergerfs
+echo "Flushing Cache..."
+killall --signal USR1 mergerfs
+sleep 1

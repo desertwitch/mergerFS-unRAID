@@ -153,13 +153,13 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 $(function() {
     $('#FLUSHNODES').click(function(){
         $('#mergerfsp-file').remove();
-        $('#mergerfsp-cmd').val('/usr/local/emhttp/plugins/mergerfsp/scripts/flushnodes');
+        $('#mergerfsp-cmd').val('/usr/local/emhttp/plugins/mergerfsp/scripts/flush');
         $('#mergerfsp-settings').submit();
     });
 
     $('#GARBAGECOLL').click(function(){
         $('#mergerfsp-file').remove();
-        $('#mergerfsp-cmd').val('/usr/local/emhttp/plugins/mergerfsp/scripts/garbagecoll');
+        $('#mergerfsp-cmd').val('/usr/local/emhttp/plugins/mergerfsp/scripts/collect');
         $('#mergerfsp-settings').submit();
     });
 

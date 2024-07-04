@@ -136,11 +136,11 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
         <dt>
             <input id="FLUSHNODES" type="button" value="FLUSH MEMORY">
             <input id="GARBAGECOLL" type="button" value="GARBAGE COLLECTION">
-            <input id="DEFAULT" type="submit" name="#default" value="Default">
         </dt>
         <dd>
             <input type="submit" id="btnApply" name="#apply" value="Apply">
             <input type="button" value="Done" onclick="done()">
+            <input id="DEFAULT" type="submit" name="#default" value="Defaults">
         </dd>
     </dl>
 

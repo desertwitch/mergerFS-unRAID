@@ -13,5 +13,5 @@
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
 #
-echo "Flushing Memory..."
+echo "Flushing Cache..."
 killall --signal USR1 mergerfs

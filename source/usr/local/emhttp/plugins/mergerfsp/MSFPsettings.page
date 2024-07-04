@@ -1,6 +1,6 @@
 Menu="OtherSettings"
 Type="xmenu"
-Title="mergerFS Settings"
+Title="mergerFS"
 Icon="hdd-o"
 Tag="hdd-o"
 Markdown="false"

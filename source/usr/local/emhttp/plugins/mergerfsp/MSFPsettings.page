@@ -151,7 +151,6 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 
 <script>
 $(function() {
-
     $('#FLUSHNODES').click(function(){
         $('#mergerfsp-file').remove();
         $('#mergerfsp-cmd').val('/usr/local/emhttp/plugins/mergerfsp/scripts/flushnodes');

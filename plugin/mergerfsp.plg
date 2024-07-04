@@ -18,6 +18,11 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.07.04
+- new: show if the mergerfs binaries are running on the settings page
+- new: add buttons to invalidate kernel cache and trigger extensive garbage collection
+- fix: show message if no extensive information is available for display on settings page
+- fix: minor optical changes on the settings page for a consistent layout between OS versions
 ###2024.07.03
 - new: add diagnostics to settings page (extensive information about active pools)
 - new: add shortcut button to access the settings page faster (from front page dashboards)

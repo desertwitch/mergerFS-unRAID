@@ -147,7 +147,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 </form>
 
 <div style="color:darkorange;"><strong>INFORMATION:</strong></div>
-<div><strong>Python 3.x is a requirement <u>for mergerFS-Tools</u> and needs to be installed, if not already present on your system (e.g. via NerdTools)</strong></div>
+<div><strong>Python 3.x is a requirement <u>for mergerFS-Tools</u> and needs to be installed, if not already present on your system (e.g. via NerdTools), to use these binaries.</strong></div>
 
 <script>
 $(function() {

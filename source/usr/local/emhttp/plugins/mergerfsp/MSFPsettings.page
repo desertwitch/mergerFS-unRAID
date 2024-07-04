@@ -147,6 +147,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 <div><strong>Python 3.x is a requirement <u>for mergerFS-Tools</u> and needs to be installed, if not already present on your system (e.g. via NerdTools)</strong></div>
 
 <script>
+showStatus('mergerfs');
 $(function() {
     // dynamix plugin update api
     <?if (function_exists('plugin_update_available') && $version = plugin_update_available('mergerfsp')):?>

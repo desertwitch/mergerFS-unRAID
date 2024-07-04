@@ -44,7 +44,7 @@ if(!empty($msfp_pools_mounts)) {
             $msfp_pools_disk_free = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | awk '{print $4}' 2>/dev/null") ?? "-")));
             $msfp_pools_disk_used = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));
             $msfp_pools_disk_total = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_pools_mount_point) . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-")));
-            exec("getfattr -d -- ".escapeshellarg($msfp_pools_mount_point)."/.mergerfs 2>/dev/null | grep user.mergerfs 2>/dev/null", $msfp_pools_attr_rows, $msfp_pools_attr_retval);
+            exec("getfattr -d -m '' -- ".escapeshellarg($msfp_pools_mount_point)."/.mergerfs 2>/dev/null | grep user.mergerfs 2>/dev/null", $msfp_pools_attr_rows, $msfp_pools_attr_retval);
             
             if($msfp_pools_attr_retval === 0 && !empty($msfp_pools_attr_rows)) {
                 $msfp_pools_return[] = "<table class='tablesorter mergertable" . ($x === 0 ? " shift" : "") . "'>";
@@ -54,15 +54,20 @@ if(!empty($msfp_pools_mounts)) {
                 for ($i=0; $i<count($msfp_pools_attr_rows); $i++) {
                     $row = array_map('htmlspecialchars', explode('=', $msfp_pools_attr_rows[$i], 2));
                     $key = str_replace("user.mergerfs.", "", trim($row[0]));
+                    
                     $val = str_replace("&quot;", "", trim($row[1]));
                     $val = str_replace('"', '', $val);
+                    if(strlen($val) > 40) {
+                      $val = "<details><summary>...</summary><span>$val</span></details>";  
+                    }
+
                     if ($i%2==0) { $msfp_pools_return[] = "<tr>"; }
                     $msfp_pools_return[] = "<td><strong>$key</strong></td><td>$val</td>";
                     if ($i%2==1) { $msfp_pools_return[] = "</tr>"; }
                 }
                 if (count($msfp_pools_attr_rows)%2==1) { $msfp_pools_return[] = "<td></td><td></td></tr>"; }
 
-                $msfp_pools_return[] = "</tbody></table><br>";
+                $msfp_pools_return[] = "</tbody></table>";
             }
         } catch (Throwable $e) { // For PHP 7
             continue;
@@ -72,6 +77,6 @@ if(!empty($msfp_pools_mounts)) {
         echo(implode('', $msfp_pools_return));
     }
 } else {
-    echo("<div><em>There is no extended information available to be displayed at the moment.</em></div>");
+    echo("<div><strong><em>There is no extended pool information available for display at the moment (perhaps none are yet mounted).</em></strong></div><br>");
 }
 ?>

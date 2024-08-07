@@ -3,14 +3,14 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "mergerfsp">
 <!ENTITY author    "desertwitch">
-<!ENTITY version   "2024.07.04">
+<!ENTITY version   "2024.08.07">
 <!ENTITY launch    "Settings/MSFPsettings">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
-<!ENTITY plgNAME   "mergerfsp-2024.07.04-x86_64-1">
-<!ENTITY plgMD5    "bac521c387418aa8328ef2088c75ace7">
+<!ENTITY plgNAME   "mergerfsp-2024.08.07-x86_64-1">
+<!ENTITY plgMD5    "24f4446c46a1ba8f9db9446c5cd772bb">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 
@@ -18,6 +18,8 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2024.08.07
+- new: switched from legacy to more recent update checking mechanism
 ###2024.07.04
 - new: show if the mergerfs binaries are running on the settings page
 - new: add buttons to invalidate kernel cache and trigger extensive garbage collection

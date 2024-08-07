@@ -169,12 +169,8 @@ $(function() {
         maxWidth: 300
     });
 
-    // dynamix plugin update api
-    <?if (function_exists('plugin_update_available') && $version = plugin_update_available('mergerfsp')):?>
-        showNotice('mergerFS <?=htmlspecialchars($version);?> available. <a>Update</a>','mergerfsp');
-        $('#user-notice a').on('click', function () {
-        $('#user-notice').empty();
-    });
-    <?endif;?>
+    if ( typeof caPluginUpdateCheck === "function" ) {
+        caPluginUpdateCheck("mergerfsp.plg",{name:"mergerFS"});
+    }
 });
 </script>

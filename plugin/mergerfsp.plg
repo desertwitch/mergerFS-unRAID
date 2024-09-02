@@ -98,7 +98,7 @@ definition for uninstallation of the plugin
 -->
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
-killall mergerfs
+killall mergerfs >/dev/null 2>&amp;1
 removepkg &plgPATH;/*.txz
 
 rm -rf &plgPATH;

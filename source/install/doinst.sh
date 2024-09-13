@@ -40,7 +40,6 @@ cp -rf $BOOT/scripts/* /etc/mergerfsp/ >/dev/null 2>&1
 rm -f /etc/cron.daily/mergerfs-poller >/dev/null 2>&1
 ln -sf /usr/local/emhttp/plugins/mergerfsp/scripts/poller /etc/cron.daily/mergerfs-poller >/dev/null 2>&1
 chmod +x /etc/cron.daily/mergerfs-poller >/dev/null 2>&1
-/etc/cron.daily/mergerfs-poller conntest >/dev/null 2>&1 &
 
 chmod 755 /etc/mergerfsp
 chown root:root /etc/mergerfsp

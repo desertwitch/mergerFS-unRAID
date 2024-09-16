@@ -1,4 +1,7 @@
 #!/bin/bash
+# shellcheck disable=SC1091
+# shellcheck disable=SC2001
+# shellcheck disable=SC2215
 #
 # Copyright Derek Macias (parts of code from NUT package)
 # Copyright macester (parts of code from NUT package)
@@ -20,18 +23,20 @@
 #
 
 sanitize_fval() {
-    local unclean=$(cat)
-    local cleaned=$(echo "$unclean" | sed "s/[;\"']/ /g")
-    cleaned=$(echo "$cleaned" | sed 's/  */ /g' | sed 's/^ *//; s/ *$//')
-    echo "$cleaned"
+	local unclean
+	local cleaned
+	unclean=$(cat)
+	cleaned=$(echo "$unclean" | sed "s/[;\"']/ /g")
+	cleaned=$(echo "$cleaned" | sed 's/  */ /g' | sed 's/^ *//; s/ *$//')
+	echo "$cleaned"
 }
 
-# shellcheck disable=SC1091
 source /boot/config/plugins/mergerfsp/mergerfsp.cfg >/dev/null 2>&1
 
 case "$1" in
 	"devtest")
 		[ "$METRICSAPI" == "disable" ] && echo "Metrics disabled, exiting..." && exit 0
+		set -x
 		;;
 	"conntest")
 		[ "$VERBOSEMETRICS" != "1" ] && exec &>/dev/null
@@ -44,7 +49,7 @@ case "$1" in
 	*)
 		[ "$VERBOSEMETRICS" != "1" ] && exec &>/dev/null
 		[ "$METRICSAPI" == "disable" ] && echo "Metrics disabled, exiting..." && exit 0
-		SLEEPTIME=$((RANDOM % 600))
+		SLEEPTIME=$((RANDOM % 1800))
 		[[ ! $SLEEPTIME =~ ^[0-9]+$ ]] && SLEEPTIME=10
 		echo "Randomized sleeping for ${SLEEPTIME}s..."
 		sleep $SLEEPTIME
@@ -52,28 +57,38 @@ case "$1" in
 esac
 
 METRIC_ENDPOINT="https://plugin-stats.desertwitch.workers.dev"
-METRIC_AUTHTOKEN=$(curl -fsS -m 180 --retry 5 --retry-delay 180 --retry-connrefused "${METRIC_ENDPOINT}/?connect")
-if [ $? -ne 0 ]; then
+METRIC_AUTHTOKEN=$(curl -fsS -m 300 --retry 5 --retry-delay 300 --retry-connrefused "${METRIC_ENDPOINT}/?connect")
+
+# shellcheck disable=SC2181
+if [ $? -ne 0 ] || [ -z "$METRIC_AUTHTOKEN" ]; then
 	echo "$METRIC_AUTHTOKEN"
-	echo "Failed to retrieve authorization token from endpoint."
+	echo "Failed to retrieve authorization token from endpoint, exiting..."
 	exit 0
 fi
-[ "$1" == "conntest"] && echo "Connection tested: OK (not sending metrics), exiting..." && exit 0
 
-# shellcheck disable=SC1091
 source /var/local/emhttp/var.ini >/dev/null 2>&1
 
+(( counter = 300 ))
+while [ -z "${flashGUID}" ] && [ $counter -ne 0 ]; do
+	sleep 1
+	source /var/local/emhttp/var.ini >/dev/null 2>&1
+	(( counter-- ))
+done
+[ -z "${flashGUID}" ] && echo "Could not establish client ID within 5 minutes, exiting..." && exit 0
+
 CLIENTID_ANONYMIZED=$(echo -n "${flashGUID}" | md5sum | awk '{print $1}')
+
+# shellcheck disable=SC2154
 CLIENTID_UNRAID_VERSION="$version"
 
-# shellcheck disable=SC1091
+CLIENTID_PLUGIN="mergerfs"
+CLIENTID_PLUGIN_VERSION=$(find /var/log/packages/ -type f -iname 'mergerfsp-*' ! -iname '*upgraded*' -printf '%f\n')
+
 source /boot/config/plugins/mergerfsp/mergerfsp.cfg >/dev/null 2>&1
 
 # ---------------------------------------------------------------------------------------
 
-METRIC_PLUGIN="mergerfs"
-MERGERFS_PLUGIN_VERSION=$(find /var/log/packages/ -type f -iname 'mergerfsp-*' -printf '%f\n')
-MERGERFS_BACKEND=$(find /var/log/packages/ -type f -iname 'mergerfs-*' -printf '%f\n')
+MERGERFS_BACKEND=$(find /var/log/packages/ -type f -iname 'mergerfs-*' ! -iname '*upgraded*' -printf '%f\n')
 
 if pgrep -x mergerfs >/dev/null 2>&1; then
 	MERGERFS_RUNNING=true
@@ -81,20 +96,26 @@ else
 	MERGERFS_RUNNING=false
 fi
 
+postfields=()
+
+[ -n "${CLIENTID_PLUGIN}" ] && postfields+=("-F" "plugin=$( sanitize_fval <<< "${CLIENTID_PLUGIN}" )")
+[ -n "${CLIENTID_ANONYMIZED}" ] && postfields+=("-F" "clientid=$( sanitize_fval <<< "${CLIENTID_ANONYMIZED}" )")
+[ -n "${CLIENTID_UNRAID_VERSION}" ] && postfields+=("-F" "unraid_version=$( sanitize_fval <<< "${CLIENTID_UNRAID_VERSION}" )")
+[ -n "${CLIENTID_PLUGIN_VERSION}" ] && postfields+=("-F" "plugin_version=$( sanitize_fval <<< "${CLIENTID_PLUGIN_VERSION}" )")
+
+[ -n "${MERGERFS_BACKEND}" ] && postfields+=("-F" "str1=$( sanitize_fval <<< "${MERGERFS_BACKEND}" )")
+[ -n "${MERGERFS_RUNNING}" ] && postfields+=("-F" "bool1=$( sanitize_fval <<< "${MERGERFS_RUNNING}" )")
+
 if curl \
-    -fsS -m 180 --retry 5 --retry-delay 180 --retry-connrefused \
-    --write-out "%{http_code} " -o /dev/null \
-    -H "User-Agent: plugin-metrics/1.0.0" \
-    -H "Authorization: Bearer ${METRIC_AUTHTOKEN}" \
-    -F "plugin=${METRIC_PLUGIN}" \
-    -F "clientid=$( sanitize_fval <<< ${CLIENTID_ANONYMIZED} )" \
-    -F "unraid_version=$( sanitize_fval <<< ${CLIENTID_UNRAID_VERSION} )" \
-    -F "plugin_version=$( sanitize_fval <<< ${MERGERFS_PLUGIN_VERSION} )" \
-    -F "str1=$( sanitize_fval <<< ${MERGERFS_BACKEND} )" \
-    -F "bool1=$( sanitize_fval <<< ${MERGERFS_RUNNING} )" \
-"${METRIC_ENDPOINT}"
+	-fsS -m 300 --retry 5 --retry-delay 300 --retry-connrefused \
+	--write-out "%{http_code} " -o /dev/null \
+	-H "User-Agent: plugin-metrics/1.0.0" \
+	-H "Authorization: Bearer ${METRIC_AUTHTOKEN}" \
+	"${postfields[@]}" "${METRIC_ENDPOINT}"
 then
-    echo "=> OK"
+	echo "=> OK"
 else
-    echo "=> FAILURE"
+	echo "=> FAILURE"
 fi
+
+[ "$1" == "devtest" ] && set +x

@@ -46,7 +46,7 @@ Markdown="false"
 
     <input id="editfile" type="text" name="editfile" value="" readonly="" data-picktop="/etc/mergerfsp" data-pickcloseonfile="true" data-pickfilter="sh" data-pickroot="/etc/mergerfsp" data-pickfolders="false" required="required" >
 
-    <textarea id="editdata" name="editdata" placeholder="Select a script file to modify." autofocus></textarea>
+    <textarea id="editdata" name="editdata" placeholder="Select a script file to modify."></textarea>
     <input type="hidden" name="commit" value="1" />
     <dl>
         <dt></dt>

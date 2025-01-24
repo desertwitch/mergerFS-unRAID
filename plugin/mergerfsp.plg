@@ -18,6 +18,9 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2025.01.24
+- fix: updated documentation link to new documentation page
+- fix: no longer arbitrarily scroll down the settings page (bug)
 ###2024.09.16
 - fix: reworked bash scripts to better standards with more safety for strange configurational states
 ###2024.09.13
@@ -90,7 +93,7 @@ install or upgrade the plugin itself
 run the post-installation scripts
 -->
 <FILE Run="/bin/bash">
-<INLINE> 
+<INLINE>
 /etc/cron.daily/mergerfs-poller conntest >/dev/null 2>&amp;1 &amp;
 echo ""
 echo "-------------------------------------------------------------"
@@ -107,7 +110,7 @@ definition for uninstallation of the plugin
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
 killall mergerfs >/dev/null 2>&amp;1
-killall mergerfs-poller >/dev/null 2>&amp;1 
+killall mergerfs-poller >/dev/null 2>&amp;1
 removepkg &plgPATH;/*.txz
 
 rm -rf &plgPATH;

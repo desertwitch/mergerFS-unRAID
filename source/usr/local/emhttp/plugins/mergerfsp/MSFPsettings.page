@@ -5,7 +5,7 @@ Icon="hdd-o"
 Tag="hdd-o"
 Markdown="false"
 ---
-<? 
+<?
 /* Copyright Derek Macias (parts of code from NUT package)
  * Copyright macester (parts of code from NUT package)
  * Copyright gfjardim (parts of code from NUT package)
@@ -107,7 +107,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
     <blockquote class="inline_help">
         <p>Enables collection of <strong>anonymized</strong> plugin usage statistics through the plugin usage metrics API.</p>
         <p>This aids prioritization of bug reports, development of new features and planning for plugin updates/deprecation.</p>
-        <p><em>Attributes: Metric ID, Plugin Version, Unraid Version, mergerFS Backend Version, mergerFS Process Active (Yes/No).</em></p> 
+        <p><em>Attributes: Metric ID, Plugin Version, Unraid Version, mergerFS Backend Version, mergerFS Process Active (Yes/No).</em></p>
         <p><strong><i class="fa fa-heart" style="color:red;"></i> If possible, please keep this setting <u>enabled</u> to support the continued development of this plugin - thank you!</strong></p>
     </blockquote>
 
@@ -164,7 +164,7 @@ require_once '/usr/local/emhttp/plugins/mergerfsp/include/mergerfsp_config.php';
 </form>
 
 <div style="color:darkorange;"><strong>INFORMATION:</strong></div>
-<div><strong>Python 3.x is a requirement <u>for mergerFS-Tools</u> and needs to be installed, if not already present on your system (e.g. via NerdTools), to use these binaries.</strong></div>
+<div><strong>Python 3 is a requirement <u>for mergerFS-Tools</u> and needs to be installed, if not already present on your system (e.g. via the Python 3 plugin), to use these binaries.</strong></div>
 
 <script>
 $(function() {

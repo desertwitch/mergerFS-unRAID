@@ -36,10 +36,8 @@ cp -n $DOCROOT/default.cfg $BOOT/mergerfsp.cfg
 cp -nr $DOCROOT/mergerfs/* $BOOT/scripts/ >/dev/null 2>&1
 cp -rf $BOOT/scripts/* /etc/mergerfsp/ >/dev/null 2>&1
 
-# set up plugin-specific polling tasks
+# remove (legacy) plugin-specific polling tasks
 rm -f /etc/cron.daily/mergerfs-poller >/dev/null 2>&1
-ln -sf /usr/local/emhttp/plugins/mergerfsp/scripts/poller /etc/cron.daily/mergerfs-poller >/dev/null 2>&1
-chmod +x /etc/cron.daily/mergerfs-poller >/dev/null 2>&1
 
 chmod 755 /etc/mergerfsp
 chown root:root /etc/mergerfsp

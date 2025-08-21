@@ -44,7 +44,43 @@ foreach ($msfp_mounts as $msfp_mount) {
             $msfp_mount_disk_used = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . escapeshellarg($msfp_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_mount_point) . " 2>/dev/null | awk '{print $3}' 2>/dev/null") ?? "-")));
             $msfp_mount_disk_total = htmlspecialchars(msfp_humanFileSize(trim(shell_exec("df -B1 " . escapeshellarg($msfp_mount_point) . " 2>/dev/null | grep " . escapeshellarg($msfp_mount_point) . " 2>/dev/null | awk '{print $2}' 2>/dev/null") ?? "-")));
 
-            $pluginname = "msfp" . $msfp_mount_id; 
+            $pluginname = "msfp" . $msfp_mount_id;
+
+            if(version_compare(parse_ini_file('/etc/unraid-version')['version'],'7.1.99', '>')) {
+            // -------------------------------------------------------------
+            // RESPONSIVE DASHBOARD
+            // -------------------------------------------------------------
+            $mytiles[$pluginname]['column2'] =
+            <<<EOT
+            <tbody id="$pluginname" title="mergerFS: $msfp_mount_name">
+                <tr>
+                <td>
+                    <span class='tile-header'>
+                    <span class='tile-header-left'>
+                    <i class='icon-disk f32'></i>
+                    <div class='section'>
+                        <h3 class='tile-header-main'>mergerFS: $msfp_mount_name</h3>
+                        <span><i class="fa fa-circle orb green-orb middle"></i>Mounted / Free: $msfp_mount_disk_free / $msfp_mount_disk_used used of $msfp_mount_disk_total ($msfp_mount_disk_util)</span>
+                    </div>
+                    </span>
+                    <span class='tile-header-right'>
+                        <span class='tile-ctrl'>
+                        </span>
+                        <span class='tile-header-right-controls'>
+                        <a href='/Settings/MSFPsettings' title='_(Go to mergerFS Settings)_'>
+                            <i class='fa fa-fw fa-cog control'></i>
+                        </a>
+                        </span>
+                    </span>
+                    </span>
+                </td>
+                </tr>
+            </tbody>
+EOT;
+            } else {
+            // -------------------------------------------------------------
+            // NON-RESPONSIVE DASHBOARD
+            // -------------------------------------------------------------
             $mytiles[$pluginname]['column2'] = <<<EOT
             <tbody id="$pluginname" title="mergerFS: $msfp_mount_name">
             <tr><td>
@@ -54,6 +90,7 @@ foreach ($msfp_mounts as $msfp_mount) {
             </td></tr>
             </tbody>
 EOT;
+            }
         }
     } catch (Throwable $e) { // For PHP 7
         continue;

@@ -22,7 +22,7 @@
 - new: mergerFS binaries updated to latest release version 2.41.0
 - release note: recommended to unmount all mergerfs pools before updating
 - release note: recommended to read the release changelog before updating
-- release changelog: https://github.com/trapexit/mergerfs/releases/tag/2.41.0
+- release changes: https://github.com/trapexit/mergerfs/releases/tag/2.41.0
 ###2025.08.21
 - fix: make pages and dashboards compliant with new responsive UI
 ###2025.02.26

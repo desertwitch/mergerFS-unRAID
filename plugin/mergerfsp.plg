@@ -18,6 +18,11 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2025.11.12
+- new: mergerFS binaries updated to latest release version 2.41.0
+- release note: recommended to unmount all mergerfs pools before updating
+- release note: recommended to read the release changelog before updating
+- release changelog: https://github.com/trapexit/mergerfs/releases/tag/2.41.0
 ###2025.08.21
 - fix: make pages and dashboards compliant with new responsive UI
 ###2025.02.26
@@ -75,9 +80,9 @@
 <!--
 install or upgrade dependency files
 -->
-<FILE Name="&plgPATH;/mergerfs-2.40.2-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
-<URL>&pkgURL;/mergerfs-2.40.2-x86_64-1.txz</URL>
-<MD5>2507c8d46400015c5dad271e7127b42a</MD5>
+<FILE Name="&plgPATH;/mergerfs-2.41.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
+<URL>&pkgURL;/mergerfs-2.41.0-x86_64-1.txz</URL>
+<MD5>8f3bcc9f65b67d1fd323d873fdb33200</MD5>
 </FILE>
 
 <FILE Name="&plgPATH;/mergerfstools-2.38.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">

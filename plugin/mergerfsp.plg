@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "mergerfsp">
 <!ENTITY author    "desertwitch">
-<!ENTITY version   "2025.11.12">
+<!ENTITY version   "2025.12.06">
 <!ENTITY launch    "Settings/MSFPsettings">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/mergerFS-unRAID/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
@@ -18,6 +18,11 @@
 
 <CHANGES>
 ## mergerFS for UNRAID
+###2025.12.06
+- new: mergerFS binaries updated to latest release version 2.41.1
+- release note: recommended to unmount all mergerfs pools before updating
+- release note: recommended to read the release changelog before updating
+- release changes: https://github.com/trapexit/mergerfs/releases/tag/2.41.1
 ###2025.11.12
 - new: mergerFS binaries updated to latest release version 2.41.0
 - release note: recommended to unmount all mergerfs pools before updating
@@ -80,9 +85,9 @@
 <!--
 install or upgrade dependency files
 -->
-<FILE Name="&plgPATH;/mergerfs-2.41.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
-<URL>&pkgURL;/mergerfs-2.41.0-x86_64-1.txz</URL>
-<MD5>8f3bcc9f65b67d1fd323d873fdb33200</MD5>
+<FILE Name="&plgPATH;/mergerfs-2.41.1-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
+<URL>&pkgURL;/mergerfs-2.41.1-x86_64-1.txz</URL>
+<MD5>82e572f90ddd08ca5d813c8cab2d7bef</MD5>
 </FILE>
 
 <FILE Name="&plgPATH;/mergerfstools-2.38.0-x86_64-1.txz" Min="6.10" Run="upgradepkg --install-new">
